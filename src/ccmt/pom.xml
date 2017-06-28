@@ -24,6 +24,8 @@
   	</repository>
   </distributionManagement>
   
+  
+  
   <dependencyManagement>
   	<dependencies>
   		<dependency>
@@ -45,6 +47,12 @@
   			<groupId>com.qylyx.ccmt</groupId>
   			<artifactId>ccmt-sms-provider</artifactId>
   			<version>${project.version}</version>
+  		</dependency>
+  		
+  		<dependency>
+  			<groupId>com.qylyx.july</groupId>
+  			<artifactId>july-salog</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
   		</dependency>
   		
   		<dependency>
