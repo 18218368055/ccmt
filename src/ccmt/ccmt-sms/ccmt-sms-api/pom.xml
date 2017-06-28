@@ -7,8 +7,8 @@
     <artifactId>ccmt-sms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>ccmt-sms-web</artifactId>
-  <name>ccmt-sms-web</name>
+  <artifactId>ccmt-sms-api</artifactId>
+  <name>ccmt-sms-api</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -16,14 +16,6 @@
   	<dependency>
 		<groupId>com.qylyx.ccmt</groupId>
 		<artifactId>ccmt-framework</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-sms-api</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-sms-provider</artifactId>
 	</dependency>
   </dependencies>
 </project>

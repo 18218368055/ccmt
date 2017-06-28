@@ -10,5 +10,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>ccmt-sms-web</module>
+    <module>ccmt-sms-api</module>
+    <module>ccmt-sms-provider</module>
   </modules>
 </project>
