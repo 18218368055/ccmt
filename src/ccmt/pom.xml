@@ -9,6 +9,7 @@
     <module>ccmt-framework</module>
     <module>ccmt-sms</module>
     <module>ccmt-core</module>
+    <module>ccmt-depend</module>
   </modules>
   
   <distributionManagement>
@@ -24,13 +25,34 @@
   	</repository>
   </distributionManagement>
   
-  
+  <properties>
+  	<july.version>0.0.1-SNAPSHOT</july.version>
+  	<remex.version>0.0.1-SNAPSHOT</remex.version>
+  </properties>
   
   <dependencyManagement>
   	<dependencies>
   		<dependency>
   			<groupId>com.qylyx.ccmt</groupId>
   			<artifactId>ccmt-framework</artifactId>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.qylyx.ccmt</groupId>
+  			<artifactId>ccmt-depend-api</artifactId>
+  			<type>pom</type>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.qylyx.ccmt</groupId>
+  			<artifactId>ccmt-depend-web</artifactId>
+  			<type>pom</type>
+  			<version>${project.version}</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>com.qylyx.ccmt</groupId>
+  			<artifactId>ccmt-depend-provider</artifactId>
+  			<type>pom</type>
   			<version>${project.version}</version>
   		</dependency>
   		<dependency>
@@ -52,8 +74,19 @@
   		<dependency>
   			<groupId>com.qylyx.july</groupId>
   			<artifactId>july-salog</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
+  			<version>${july.version}</version>
   		</dependency>
+  		<dependency>
+		  	<groupId>com.qylyx.remex</groupId>	
+		  	<artifactId>remex-root</artifactId>
+		  	<version>${july.version}</version>
+		  	<type>pom</type>
+	  	</dependency>
+	  	<dependency>
+		  	<groupId>com.qylyx.remex</groupId>	
+		  	<artifactId>remex-iecup</artifactId>
+		  	<version>${july.version}</version>
+	  	</dependency>
   		
   		<dependency>
   			<groupId>org.springframework.boot</groupId>

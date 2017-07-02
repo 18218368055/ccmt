@@ -17,14 +17,14 @@
 	<link href="${ctx}/static/plugins/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
 	<!-- Custom Theme Style -->
     <link href="${ctx}/static/plugins/gentelella/build/css/custom.css" rel="stylesheet">
-    <link href="${ctx}/static/css/my-custom.css" rel="stylesheet">
+    <%-- <link href="${ctx}/static/css/my-custom.css" rel="stylesheet"> --%>
 	<!-- jquery -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery-1.9.1.js"></script>
 	<%-- <script type="text/javascript" src="${ctx}/static/plugins/gentelella/vendors/jquery/dist/jquery.min.js"></script> --%>
 	<!-- july工具函数库 -->
-	<%-- <script type="text/javascript" src="${ctx}/static/js/plugins/july.js"></script> --%>
+	<script type="text/javascript" src="${ctx}/static/js/plugins/july.js"></script>
 	<!-- CCMT通用函数 -->
-	<%-- <script type="text/javascript" src="${ctx}/static/js/common/common.js"></script> --%>
+	<script type="text/javascript" src="${ctx}/static/js/common/common.js"></script>
 	<!-- js插件库的初始化及相关通用操作 -->
 	<%-- <script type="text/javascript" src="${ctx}/static/js/common/plugins.js"></script> --%>
 

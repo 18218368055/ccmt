@@ -15,11 +15,8 @@
   <dependencies>
   	<dependency>
 		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-framework</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-sms-api</artifactId>
+		<artifactId>ccmt-depend-provider</artifactId>
+		<type>pom</type>
 	</dependency>
   </dependencies>
 </project>

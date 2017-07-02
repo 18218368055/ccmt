@@ -91,7 +91,7 @@ var july = {};
 		formBuildWrite : function(ag) {
 			ag = ag || {};
 			var root = ag["root"] || "body"
-			var form = this.build(ag);
+			var form = this.formBuild(ag);
 			$(root).append(form);
 			return form;
 		},
@@ -106,7 +106,17 @@ var july = {};
 		 *   root ： 选填，默认body，写于哪个节点下
 		 */
 		formBuildSubmit : function(ag) {
-			var form = this.write(ag);
+			var form = this.formBuildWrite(ag);
+			form.submit();
+		},
+		/**
+		 * 构建出一个form表单，并写某节点下，默认body后，然后提交
+		 */
+		formBuildSubmit : function(url, data) {
+			var form = this.formBuildWrite({
+				url : url,
+				data : data
+			});
 			form.submit();
 		},
 	});

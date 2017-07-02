@@ -3,4 +3,16 @@
 
 <!-- 用户映射文件 -->
 <mapper namespace="com.qylyx.ccmt.sms.dao.user.SmsUserDao">
+	<sql id="smUserResult">
+		id, username, name, sex, birthday, status, creator, create_time, modify_time
+	</sql>
+	<sql id="smUserLoginResult">
+		<include refid="smUserResult"/>, password
+	</sql>
+	
+	<!-- 登录 -->
+	<select id="login" resultType="com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO">
+		select <include refid="smUserLoginResult"/> from sms_user t where
+		t.username = #{username}
+	</select>
 </mapper>

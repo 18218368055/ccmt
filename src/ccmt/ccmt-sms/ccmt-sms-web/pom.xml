@@ -15,15 +15,13 @@
   <dependencies>
   	<dependency>
 		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-framework</artifactId>
+		<artifactId>ccmt-depend-web</artifactId>
+		<type>pom</type>
 	</dependency>
+	
 	<dependency>
-		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-sms-api</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.qylyx.ccmt</groupId>
-		<artifactId>ccmt-sms-provider</artifactId>
+	    <groupId>org.apache.shiro</groupId>
+	    <artifactId>shiro-core</artifactId>
 	</dependency>
   </dependencies>
 </project>

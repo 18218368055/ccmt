@@ -86,7 +86,7 @@
     </div>
     
     
-    <%-- <script type="text/javascript" src="${ctx}/static/js/sys/login.js"></script> --%>
+    <script type="text/javascript" src="${ctx}/static/js/sys/login.js"></script>
   </body>
 </html>
 

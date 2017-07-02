@@ -1,34 +1,16 @@
 package com.qylyx.ccmt.config;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import com.qylyx.july.salog.pop.SalogHandle;
+import com.qylyx.july.salog.interceptor.SalogInterceptor;
 
-
-@Aspect
+/**
+ * 日志自动打印的拦截器
+ * 
+ * @author Qiaoxin.Hong
+ *
+ */
 @Component
-public class CcmtSalogInterceptor {
+public class CcmtSalogInterceptor extends SalogInterceptor {
 	
-	@Autowired
-	private SalogHandle salogHandle;
-	
-	@Pointcut("@annotation(com.qylyx.july.salog.annotation.Salog)")
-	private void salogMethod() {}
-	
-	@Around("salogMethod()")
-	public Object around(ProceedingJoinPoint point) throws Throwable {
-		return salogHandle.handle(point);
-	}
-	
-	@Bean
-	public SalogHandle salogHandle() {
-		return new SalogHandle();
-	}
-
 }
