@@ -8,8 +8,8 @@ import com.qylyx.ccmt.sms.dao.user.SmsUserDao;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.ccmt.sms.service.ISmsUserService;
 import com.qylyx.july.salog.annotation.Salog;
+import com.qylyx.remex.framework.base.entity.result.Result;
 import com.qylyx.remex.framework.base.service.BaseService;
-import com.qylyx.remex.iecup.entity.ResultEup;
 import com.qylyx.remex.iecup.exception.RemexIecupException;
 
 /**
@@ -32,11 +32,15 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	 */
 	@Salog("登录")
 	@Override
-	public ResultEup<SmsUserVO> login(String username) {
+	public Result<SmsUserVO> login(String username) {
 		if (StringUtils.isBlank(username))
 			throw new RemexIecupException("301", "用户名不能为空！");
 //		Long.valueOf("aa");
-		SmsUserVO user = smsUserDao.login(username);
-		return new ResultEup<SmsUserVO>(user);
+//		SmsUserVO user = smsUserDao.login(username);
+		SmsUserVO user = new SmsUserVO();
+		user.setUsername("admin");
+		user.setName("管理员");
+		user.setPassword("888888");
+		return new Result<SmsUserVO>(user);
 	} 
 }

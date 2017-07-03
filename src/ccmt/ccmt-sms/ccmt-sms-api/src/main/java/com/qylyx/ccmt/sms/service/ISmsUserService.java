@@ -1,7 +1,7 @@
 package com.qylyx.ccmt.sms.service;
 
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
-import com.qylyx.remex.iecup.entity.ResultEup;
+import com.qylyx.remex.framework.base.entity.result.Result;
 
 /**
  * 用户管理service
@@ -16,5 +16,5 @@ public interface ISmsUserService {
 	 * @param username 用户名
 	 * @return
 	 */
-	public ResultEup<SmsUserVO> login(String username);
+	public Result<SmsUserVO> login(String username);
 }

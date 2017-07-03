@@ -2,7 +2,9 @@ package com.qylyx.ccmt.sms.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.july.salog.annotation.Salog;
 
 /**
@@ -23,5 +25,16 @@ public class MainController {
 	@RequestMapping("index")
 	public String index() {
 		return "index";
+	}
+	
+	@Salog("测试功能")
+	@RequestMapping("test")
+	@ResponseBody
+	public SmsUserVO test() {
+		SmsUserVO user = new SmsUserVO();
+		user.setName("测试人员");
+		user.setUsername("test");
+		Long.valueOf("aa");
+		return user;
 	}
 }

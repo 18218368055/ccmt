@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.ccmt.sms.service.ISmsUserService;
-import com.qylyx.remex.iecup.entity.ResultEup;
+import com.qylyx.remex.framework.base.entity.result.Result;
 
 /**
  * 登录权限登录器
@@ -32,7 +32,7 @@ public class ShiroRealm extends AuthorizingRealm {
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-		ResultEup<SmsUserVO> result = smsUserService.login(upToken.getUsername());
+		Result<SmsUserVO> result = smsUserService.login(upToken.getUsername());
 		if (result.isFailed())
 			throw new AuthenticationException("登录失败，" + result.getLog());
 		return new SimpleAuthenticationInfo(result.getData(), result.getData().getPassword(), getName());

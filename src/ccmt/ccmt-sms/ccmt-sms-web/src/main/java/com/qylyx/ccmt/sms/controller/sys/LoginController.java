@@ -39,7 +39,6 @@ public class LoginController {
 	 */
 	@RequestMapping("login")
 	public String login(HttpSession session, String username, String password) {
-		System.out.println("===== login =====");
 		try {
 			UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 			Subject subject = SecurityUtils.getSubject();
@@ -47,11 +46,8 @@ public class LoginController {
 			//登录成功的用户
 			SmsUserVO user = (SmsUserVO) subject.getPrincipal();
 			session.setAttribute("loginUser", user);
-			System.out.println("login success !!!!!!");
 			return "redirect:index";
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("login error !!!!!!");
 			return "redirect:toLogin";
 		}
 	}

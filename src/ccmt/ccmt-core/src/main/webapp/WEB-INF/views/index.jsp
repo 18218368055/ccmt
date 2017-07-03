@@ -8,5 +8,20 @@
 </head>
 <body>
 	CCMT index !!!!
+	
+	<script type="text/javascript">
+		$.ajax({
+			url : "test",
+			dataType : "json",
+			success : function(result) {
+				console.log("=== success ===");
+				console.log(result);
+			},
+			error : function(result) {
+				console.log("=== error ===");
+				console.log(result);
+			}
+		});
+	</script>
 </body>
 </html>
