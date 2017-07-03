@@ -30,11 +30,10 @@ public class MainController {
 	@Salog("测试功能")
 	@RequestMapping("test")
 	@ResponseBody
-	public SmsUserVO test() {
+	public Object test() {
 		SmsUserVO user = new SmsUserVO();
 		user.setName("测试人员");
 		user.setUsername("test");
-		Long.valueOf("aa");
 		return user;
 	}
 }
