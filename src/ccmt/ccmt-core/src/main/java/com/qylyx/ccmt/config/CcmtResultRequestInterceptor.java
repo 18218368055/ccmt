@@ -2,6 +2,7 @@ package com.qylyx.ccmt.config;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import com.qylyx.remex.iecup.mop.RemexResultRequestHandle;
  * @author Qiaoxin.Hong
  *
  */
+@Aspect
 @Component
 public class CcmtResultRequestInterceptor {
 	

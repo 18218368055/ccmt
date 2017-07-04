@@ -10,7 +10,7 @@
  * Version:3.0.0
  */
 
-package com.qyly.ccmt.sm.entity.sbd.vo.dict;
+package com.qylyx.ccmt.sms.entity.sbd;
 
 import java.util.Date;
 import javax.persistence.Column;

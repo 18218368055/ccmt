@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.ccmt.sms.service.ISmsUserService;
-import com.qylyx.remex.framework.base.entity.result.Result;
+import com.qylyx.remex.base.entity.Result;
 
 /**
  * 登录权限登录器

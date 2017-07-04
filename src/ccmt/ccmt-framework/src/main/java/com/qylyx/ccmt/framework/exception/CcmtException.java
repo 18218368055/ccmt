@@ -1,6 +1,6 @@
 package com.qylyx.ccmt.framework.exception;
 
-import com.qylyx.remex.framework.base.exception.RemexException;
+import com.qylyx.remex.base.exception.RemexException;
 
 /**
  * ccmt异常类

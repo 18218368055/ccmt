@@ -17,12 +17,21 @@
 	<link href="${ctx}/static/plugins/gentelella/vendors/nprogress/nprogress.css" rel="stylesheet">
 	<!-- Custom Theme Style -->
     <link href="${ctx}/static/plugins/gentelella/build/css/custom.css" rel="stylesheet">
+    <!-- jqGrid样式 -->
+    <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui.jqgrid.css">
+    <!-- jQuery ui样式 -->
+	<link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/redmond/jquery-ui-1.8.16.custom.css">
     <%-- <link href="${ctx}/static/css/my-custom.css" rel="stylesheet"> --%>
 	<!-- jquery -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery-1.9.1.js"></script>
-	<%-- <script type="text/javascript" src="${ctx}/static/plugins/gentelella/vendors/jquery/dist/jquery.min.js"></script> --%>
+	<!-- jqGrid -->
+	<script type="text/javascript" src="${ctx}/static/plugins/jqgrid/js/jquery.jqGrid.js"></script>
+	<!-- jqGrid中文语言包 -->
+	<script type="text/javascript" src="${ctx}/static/plugins/jqgrid/js/i18n/grid.locale-cn.js"></script>
 	<!-- july工具函数库 -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/july.js"></script>
+	<!-- remex标准函数库 -->
+	<script type="text/javascript" src="${ctx}/static/js/plugins/remex.js"></script>
 	<!-- CCMT通用函数 -->
 	<script type="text/javascript" src="${ctx}/static/js/common/common.js"></script>
 	<!-- js插件库的初始化及相关通用操作 -->
