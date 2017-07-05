@@ -1,6 +1,7 @@
 package com.qylyx.ccmt.sms.service.user;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -58,14 +59,17 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	public Result<Page<SmsUserVO>> queryUserList(PageCo pageCo, SmsUserListCo co) {
 		//验证分页条件
 		validatePageCo(pageCo);
-		
+		int index = (int) ((pageCo.getPageNum() - 1) * pageCo.getPageSize());
 		List<SmsUserVO> list = new ArrayList<SmsUserVO>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = index; i < index + 10; i++) {
 			SmsUserVO user = new SmsUserVO();
 			user.setId(1000L + i);
 			user.setUsername("lu" + i);
 			user.setName("路人甲" + i);
 			user.setPassword("888888");
+			user.setSex(1);
+			user.setBirthday(new Date());
+			user.setStatus(0);
 			list.add(user);
 		}
 		Page<SmsUserVO> page = createPage(pageCo);

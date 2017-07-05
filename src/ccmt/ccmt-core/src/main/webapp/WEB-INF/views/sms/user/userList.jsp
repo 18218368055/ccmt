@@ -13,7 +13,6 @@
 	<table id="dataTable"></table>
 	<div id="dataPage"></div>
 	
-	
 	<script type="text/javascript" src="${ctx}/static/js/sms/user/userList.js"></script>
 </body>
 </html>

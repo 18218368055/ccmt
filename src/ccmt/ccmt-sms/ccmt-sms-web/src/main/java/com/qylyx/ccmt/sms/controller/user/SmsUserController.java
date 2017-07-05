@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSONObject;
 import com.qylyx.ccmt.sms.entity.user.co.SmsUserListCo;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.ccmt.sms.service.ISmsUserService;
@@ -61,8 +60,20 @@ public class SmsUserController {
 	@RequestMapping("add")
 	@ResponseBody
 	public Object add(SmsUserVO vo) {
-		System.out.println("add ====  " + JSONObject.toJSONString(vo));
 		vo = smsUserService.add(vo).getData();
+		return vo;
+	}
+	
+	/**
+	 * 修改用户
+	 * @param vo
+	 * @return
+	 */
+	@Salog("修改用户")
+	@RequestMapping("update")
+	@ResponseBody
+	public Object update(SmsUserVO vo) {
+		vo.setName(vo.getName() + "uu");
 		return vo;
 	}
 }

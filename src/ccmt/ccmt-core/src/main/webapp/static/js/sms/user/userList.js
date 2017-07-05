@@ -1,67 +1,61 @@
 // **** 用户列表 ****
 
+//数据列表表格
+var $dataTable;
+
 $(document).ready(function(){
+	$dataTable = $("#dataTable");
+	
 	//初始化数据
 	initData();
-	
-	initEditUi();
 });
 
 /**
  * 初始化数据
  */
 function initData() {
-	$("#dataTable").remexJqGrid({
+	$dataTable.remexJqGrid({
 		url : "/sms/user/queryList",
 		colModel : [
            {name : "id", label : "ID",},
            {name : "username", label : "用户名", editable : true},
            {name : "name", label : "姓名", editable : true},
-           {name : "sex", label : "性别", editable : true},
-           {name : "birthday", label : "生日",},
+           {name : "sex", label : "性别", editable : true, edittype : "select", editoptions : {value : "0:男;1:女"}},
+           {name : "birthday", label : "生日", editable : true},
            {name : "status", label : "状态",},
+           {label : "操作", viewable : false, formatter:function(cellvalue, options, rowObject) {
+        	   var opDiv = '<input type="button" value="详" onclick="toView(\'' + options.rowId + '\')">';
+        	   opDiv += '<input type="button" value="增" onclick="toAdd()">';
+        	   opDiv += '<input type="button" value="改" onclick="toEdit(\'' + options.rowId + '\')">';
+        	   return opDiv;
+           }},
 		],
 		pager : "#dataPage",
 		caption : "用户列表",
 	});
 }
 
-function initEditUi() {
-	//新增按钮配置参数
-	var addOptions = {
-		url : "/sms/user/add",
-		mtype: "POST",
-		onclickSubmit : function(params, postdata) {
-			postdata.dataTable_id = "";
-		},
-		afterSubmit : function(response, postdata) {
-			console.log(response);
-			postdata.id = 20000;
-			alert("新增成功");
-			return [true, 'error', '']
-		},
-		reloadAfterSubmit : false,
-		closeAfterEdit : true,
-    }
-	
-	//修改按钮配置参数
-	var editOptions = {
-		onclickSubmit: function(params, postdata) {
-			return false;
-		},
-		closeAfterEdit: true,
-	}
-	
-	//删除按钮配置参数
-    var delOptions = {
-        onclickSubmit: function(params, postdata) {
-        }
-    };
-	$("#dataTable").navGrid("#dataPage",
-		{}, //options
-		editOptions,
-        addOptions,
-        delOptions,
-        {} // search options
-	);
+/**
+ * 打开详情界面
+ */
+function toView(rowId) {
+	$dataTable.remexJgToView(rowId);
+}
+
+/**
+ * 打开新增界面
+ */
+function toAdd() {
+	$dataTable.remexJgToAdd({
+		url : "/sms/user/add"
+	});
+}
+
+/**
+ * 打开修改界面
+ */
+function toEdit(rowId) {
+	$dataTable.remexJgToEdit(rowId, {
+		url : "/sms/user/update"
+	});
 }
