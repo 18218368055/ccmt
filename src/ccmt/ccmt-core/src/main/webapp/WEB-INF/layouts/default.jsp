@@ -20,8 +20,13 @@
     <!-- jqGrid样式 -->
     <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui.jqgrid.css">
     <!-- jQuery ui样式 -->
-	<link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/redmond/jquery-ui-1.8.16.custom.css">
-    <%-- <link href="${ctx}/static/css/my-custom.css" rel="stylesheet"> --%>
+	<%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/redmond/jquery-ui-1.8.16.custom.css"> --%>
+	<link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/cupertino/jquery-ui-1.8.16.custom.css">
+	<%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/flick/jquery-ui-1.8.16.custom.css"> --%>
+	<%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/hot-sneaks/jquery-ui-1.8.16.custom.css"> --%>
+	<%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/start/jquery-ui-1.8.20.custom.css"> --%>
+	<%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/ui-lightness/jquery-ui-1.8.16.custom.css"> --%>
+    <link href="${ctx}/static/css/my-custom.css" rel="stylesheet">
 	<!-- jquery -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery-1.9.1.js"></script>
 	<!-- jqGrid -->

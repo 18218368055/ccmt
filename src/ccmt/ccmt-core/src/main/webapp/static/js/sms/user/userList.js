@@ -10,6 +10,10 @@ $(document).ready(function(){
 	initData();
 });
 
+function ccmtTableBtn(op, name, click, title) {
+	
+}
+
 /**
  * 初始化数据
  */
@@ -24,9 +28,10 @@ function initData() {
            {name : "birthday", label : "生日", editable : true},
            {name : "status", label : "状态",},
            {label : "操作", viewable : false, formatter:function(cellvalue, options, rowObject) {
-        	   var opDiv = '<input type="button" value="详" onclick="toView(\'' + options.rowId + '\')">';
-        	   opDiv += '<input type="button" value="增" onclick="toAdd()">';
-        	   opDiv += '<input type="button" value="改" onclick="toEdit(\'' + options.rowId + '\')">';
+        	   var opDiv = '';
+        	   opDiv += '<button onclick="toView(\'' + options.rowId + '\')" class="btn btn-info btn-xs" title="详情">详</button>';
+        	   opDiv += '<button onclick="toEdit(\'' + options.rowId + '\')" class="btn btn-success btn-xs" title="修改">改</button>';
+        	   opDiv += '<button onclick="" class="btn btn-danger btn-xs" title="禁用">禁</button>';
         	   return opDiv;
            }},
 		],

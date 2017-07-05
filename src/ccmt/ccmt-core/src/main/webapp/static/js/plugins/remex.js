@@ -18,7 +18,7 @@ var remex = {};
 			mtype : "post",  //ajax提交方式。post或者post，默认get
 			viewrecords : true,  //定义是否要显示总记录数
 			autowidth : true,  //自动宽度
-			height : 300,  //表格高度，可以是数字，像素值或者百分比
+			height : 340,  //表格高度，可以是数字，像素值或者百分比
 			jsonReader : {   //出参分页参数设置
 				root : "data.data",
 				page : "data.pageNum",

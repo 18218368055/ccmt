@@ -1,0 +1,70 @@
+/* jqgrid */
+
+.jqgrow.ui-row-ltr.ui-widget-content {
+	height: 32px;
+}
+
+.ui-jqgrid-labels {
+    height: 30px;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th div {
+    height: 20px;
+}
+
+/* jqgrid End */
+
+/*默认按钮*/
+.ccmt-btn {
+	width : 110px;
+	margin-bottom: 30px;
+}
+
+/* 条件搜索栏 */
+.csb-row .csb-label {
+	float : left;
+	width: 35%;
+	height: 34px;
+	line-height: 34px;
+	text-align: right;
+}
+
+.csb-row .csb-control {
+	width: 65%;
+}
+
+.csb-row .csb-btn {
+	
+}
+
+/* 条件搜索栏  End */
+
+/* 分页栏 */
+.pgb-row {
+	padding: 15px;
+    float: right;
+}
+.pgb-row .paginationjs-pages>ul>li {
+	margin: 0px 3px;
+	border-right: 1px solid #aaa;
+}
+/* 分页栏 End */
+
+/* 数据表格 */
+.dtb-row .dtb-op-td .btn {
+	margin-bottom: 0px;
+	margin-right: 2px;
+}
+
+/* 数据表格 End */
+
+/* 编辑表单 */
+.efc-content label.error {
+	margin-bottom: 0px;
+	font-weight: normal;
+}
+
+.efc-content .alert {
+    max-width: 250px;
+}
+/* 编辑表单 End */
