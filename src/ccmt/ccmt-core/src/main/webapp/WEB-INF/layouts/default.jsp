@@ -18,17 +18,19 @@
 	<!-- Custom Theme Style -->
     <link href="${ctx}/static/plugins/gentelella/build/css/custom.css" rel="stylesheet">
     <!-- jqGrid样式 -->
-    <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui.jqgrid.css">
+    <%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui.jqgrid.css"> --%>
     <!-- jQuery ui样式 -->
-	<link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/cupertino/jquery-ui-1.8.16.custom.css">
+	<%-- <link rel="stylesheet" href="${ctx}/static/plugins/jqgrid/css/ui/cupertino/jquery-ui-1.8.16.custom.css"> --%>
 	<!-- 自定义样式 -->
     <link href="${ctx}/static/css/my-custom.css" rel="stylesheet">
 	<!-- jquery -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery-1.9.1.js"></script>
 	<!-- jqGrid -->
-	<script type="text/javascript" src="${ctx}/static/plugins/jqgrid/js/jquery.jqGrid.js"></script>
+	<%-- <script type="text/javascript" src="${ctx}/static/plugins/jqgrid/js/jquery.jqGrid.js"></script> --%>
 	<!-- jqGrid中文语言包 -->
-	<script type="text/javascript" src="${ctx}/static/plugins/jqgrid/js/i18n/grid.locale-cn.js"></script>
+	<%-- <script type="text/javascript" src="${ctx}/static/plugins/jqgrid/js/i18n/grid.locale-cn.js"></script> --%>
+	<!-- juicer -->
+	<script type="text/javascript" src="${ctx}/static/js/plugins/juicer-july.js"></script>
 	<!-- july工具函数库 -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/july.js"></script>
 	<!-- remex标准函数库 -->
@@ -36,7 +38,7 @@
 	<!-- CCMT通用函数 -->
 	<script type="text/javascript" src="${ctx}/static/js/common/common.js"></script>
 	<!-- js插件库的初始化及相关通用操作 -->
-	<%-- <script type="text/javascript" src="${ctx}/static/js/common/plugins.js"></script> --%>
+	<script type="text/javascript" src="${ctx}/static/js/common/plugins-config.js"></script>
 
 	<sitemesh:write property="head"/>
 </head>

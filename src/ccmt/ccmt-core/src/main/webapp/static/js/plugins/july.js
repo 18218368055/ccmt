@@ -146,6 +146,72 @@ var july = {};
 	});
 	//==================== href的相关处理 End ====================
 	
+	$.extend(july, {
+		/**
+		 * july的通用ajax提交，并提供一个简单的可防重复提交的实现
+		 * ag其它入参：
+		 * prFlag {string} 防重复提交的标识，唯一，对应值：true时不可操作，false：可操作
+		 * 会默认设置type、dataType
+		 */
+		ajax : function(ag) {
+			ag = ag || {};
+			var self = $.ccmt;
+			//防重复提交的相关操作
+			var prFlag = ag.prFlag;
+			var isPrFlag = july.isNotEmpty(prFlag);
+			if (isPrFlag) {
+				var oldPrFlag = self.ajaxPrFlagBox[prFlag];
+				//第一次请求执行
+				if (oldPrFlag) return false;
+				self.ajaxPrFlagBox[prFlag] = true;
+			}
+			//默认配置
+			var aguse = {
+				type : "post",
+				dataType : "json",
+			}
+			
+			ag = $.extend(aguse, ag);
+			
+			//用于操作失败的函数后额外做一些其它操作
+			var itError = aguse.error;
+			if (itError) {
+				aguse.error = function (XMLHttpRequest, textStatus, errorThrown) {
+					//防重复提交的相关操作，操作异常时重置回该标识
+					if (isPrFlag) {
+						self.ajaxPrFlagBox[prFlag] = false;
+					}
+					itError(XMLHttpRequest, textStatus, errorThrown);
+				}
+			}
+			
+			//用于操作成功的函数后额外做一些其它操作
+			var itSuccess = aguse.success;
+			if (itSuccess) {
+				aguse.success = function (data, textStatus, jqXHR) {
+					itSuccess(data, textStatus, jqXHR);
+					//防重复提交的相关操作，操作成功后重置回该标识
+					if (isPrFlag) {
+						self.ajaxResetPrFlag(prFlag);
+					}
+				}
+			}
+			
+			$.ajax(aguse);
+		},
+		/**
+		 * 防重复提交的标识容器
+		 */
+		ajaxPrFlagBox : {},
+		/**
+		 * 重置防重复提交的标识
+		 */
+		ajaxResetPrFlag : function(flag) {
+			var self = $.ccmt;
+			self.ajaxPrFlagBox[flag] = false;
+		},
+	});
+	
 	//==================== 其它 ====================
 	$.extend(july, {
 		/**

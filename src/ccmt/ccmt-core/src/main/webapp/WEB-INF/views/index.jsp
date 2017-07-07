@@ -149,7 +149,7 @@
 	<script src="${ctx}/static/plugins/gentelella/build/js/custom.min.js"></script>
 	
 	<!-- 数据字典 -->
-	<%-- <script type="text/javascript" src="${ctx}/july/dict/js/july-dd.js"></script> --%>
+	<script type="text/javascript" src="${ctx}/static/js/common/ccmt-dd.js"></script>
 	
 	<!-- <script type="text/javascript">
 		//初始化数据字典

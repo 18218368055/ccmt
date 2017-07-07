@@ -3,6 +3,7 @@ package com.qylyx.ccmt.sms.service.user;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,25 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	
 	@Autowired
 	private SmsUserDao smsUserDao;
+	
+	private List<SmsUserVO> itemUserList = new ArrayList<SmsUserVO>();
+	
+	public SmsUserService() {
+		Random random = new Random();
+		for (int i = 0; i < 126; i++) {
+			SmsUserVO user = new SmsUserVO();
+			user.setId(1000L + i);
+			user.setUsername("lu" + i);
+			user.setName("路人甲" + i);
+			user.setPassword("888888");
+			user.setSex(random.nextInt(2));
+			user.setBirthday(new Date());
+			user.setStatus(random.nextInt(2));
+			itemUserList.add(user);
+		}
+		itemUserList.get(0).setUsername("admin");
+		itemUserList.get(0).setName("管理员");
+	}
 
 	/**
 	 * 登录
@@ -43,11 +63,15 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 		if (StringUtils.isBlank(username))
 			throw new RemexServiceException("301", "用户名不能为空！");
 //		SmsUserVO user = smsUserDao.login(username);
-		SmsUserVO user = new SmsUserVO();
-		user.setUsername("admin");
-		user.setName("管理员");
-		user.setPassword("888888");
-		return new Result<SmsUserVO>(user);
+		
+		SmsUserVO smsUserVO = null;
+		for (SmsUserVO user : itemUserList) {
+			if (username.equals(user.getUsername())) {
+				smsUserVO = user;
+				break;
+			}
+		}
+		return new Result<SmsUserVO>(smsUserVO);
 	}
 
 	/**
@@ -62,18 +86,13 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 		int index = (int) ((pageCo.getPageNum() - 1) * pageCo.getPageSize());
 		List<SmsUserVO> list = new ArrayList<SmsUserVO>();
 		for (int i = index; i < index + 10; i++) {
-			SmsUserVO user = new SmsUserVO();
-			user.setId(1000L + i);
-			user.setUsername("lu" + i);
-			user.setName("路人甲" + i);
-			user.setPassword("888888");
-			user.setSex(1);
-			user.setBirthday(new Date());
-			user.setStatus(0);
+			if (i > itemUserList.size() - 1)
+				break;
+			SmsUserVO user = itemUserList.get(i);
 			list.add(user);
 		}
 		Page<SmsUserVO> page = createPage(pageCo);
-		page.setData(list).setTotal(38L).setTotalPage(4L);
+		page.setData(list).setTotal(itemUserList.size() + 0L).setTotalPage(13L);
 		return new Result<Page<SmsUserVO>>(page);
 	}
 
@@ -84,7 +103,8 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	 */
 	@Override
 	public Result<SmsUserVO> add(SmsUserVO vo) {
-		vo.setId(2001L);
+		vo.setId(itemUserList.size() + 1001L);
+		itemUserList.add(vo);
 		return new Result<SmsUserVO>(vo);
 	} 
 }
