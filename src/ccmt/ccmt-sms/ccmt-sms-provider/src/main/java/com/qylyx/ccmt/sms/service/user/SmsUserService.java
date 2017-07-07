@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qylyx.ccmt.sms.dao.user.SmsUserDao;
 import com.qylyx.ccmt.sms.entity.user.co.SmsUserListCo;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
-import com.qylyx.ccmt.sms.service.ISmsUserService;
 import com.qylyx.july.salog.annotation.Salog;
 import com.qylyx.remex.base.entity.Result;
 import com.qylyx.remex.base.service.exception.RemexServiceException;
@@ -30,8 +27,8 @@ import com.qylyx.remex.framework.base.service.BaseService;
 @Service
 public class SmsUserService extends BaseService implements ISmsUserService {
 	
-	@Autowired
-	private SmsUserDao smsUserDao;
+//	@Autowired
+//	private SmsUserDao smsUserDao;
 	
 	private List<SmsUserVO> itemUserList = new ArrayList<SmsUserVO>();
 	
@@ -43,9 +40,9 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 			user.setUsername("lu" + i);
 			user.setName("路人甲" + i);
 			user.setPassword("888888");
-			user.setSex(random.nextInt(2));
+			user.setSex(random.nextInt(2) + "");
 			user.setBirthday(new Date());
-			user.setStatus(random.nextInt(2));
+			user.setStatus(random.nextInt(2) + "");
 			itemUserList.add(user);
 		}
 		itemUserList.get(0).setUsername("admin");
@@ -79,13 +76,14 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	 * @param co 查询条件
 	 * @return
 	 */
+	@Salog("查询用户列表")
 	@Override
 	public Result<Page<SmsUserVO>> queryUserList(PageCo pageCo, SmsUserListCo co) {
 		//验证分页条件
 		validatePageCo(pageCo);
 		int index = (int) ((pageCo.getPageNum() - 1) * pageCo.getPageSize());
 		List<SmsUserVO> list = new ArrayList<SmsUserVO>();
-		for (int i = index; i < index + 10; i++) {
+		for (int i = index; i < index + pageCo.getPageSize(); i++) {
 			if (i > itemUserList.size() - 1)
 				break;
 			SmsUserVO user = itemUserList.get(i);
@@ -101,10 +99,40 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	 * @param vo 用户对象
 	 * @return
 	 */
+	@Salog("新增用户")
 	@Override
 	public Result<SmsUserVO> add(SmsUserVO vo) {
 		vo.setId(itemUserList.size() + 1001L);
 		itemUserList.add(vo);
 		return new Result<SmsUserVO>(vo);
+	}
+
+	@Override
+	public Result<SmsUserVO> update(SmsUserVO vo) {
+		return null;
+	}
+
+	/**
+	 * 启用/禁用用户状态
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	@Salog("启用/禁用用户状态")
+	@Override
+	public Result<Void> changeUserStatus(Long id, String status) {
+		if (id == null)
+			throw new RemexServiceException("301", "id不能为空！");
+		if (StringUtils.isBlank(status))
+			throw new RemexServiceException("302", "status不能为空！");
+		
+		for (SmsUserVO smsUserVO : itemUserList) {
+			if (id.equals(smsUserVO.getId())) {
+				smsUserVO.setStatus(status);
+				break;
+			}
+		}
+		
+		return new Result<Void>(null);
 	} 
 }

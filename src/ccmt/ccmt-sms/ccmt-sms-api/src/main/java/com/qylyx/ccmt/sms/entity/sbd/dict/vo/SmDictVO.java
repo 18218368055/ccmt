@@ -54,7 +54,7 @@ public class SmDictVO implements java.io.Serializable {
     
     /** 状态，0：禁用，1：启用 */
     @Column(name = "STATUS")
-    private Integer status;
+    private String status;
     
     /** 排序 */
     @Column(name = "SORT")
@@ -180,7 +180,7 @@ public class SmDictVO implements java.io.Serializable {
      * 
      * @return 状态
      */
-    public Integer getStatus() {
+    public String getStatus() {
         return this.status;
     }
      
@@ -190,7 +190,7 @@ public class SmDictVO implements java.io.Serializable {
      * @param status
      *          状态，0：禁用，1：启用
      */
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
     

@@ -50,7 +50,7 @@ public class SmsUserVO implements java.io.Serializable {
     
     /** 性别，0：男；1：女 */
     @Column(name = "SEX")
-    private Integer sex;
+    private String sex;
     
     /** 生日 */
     @Column(name = "BIRTHDAY")
@@ -74,7 +74,7 @@ public class SmsUserVO implements java.io.Serializable {
     
     /** 状态，0：禁用；1：启用 */
     @Column(name = "STATUS")
-    private Integer status;
+    private String status;
     
     /**
      * 获取主键
@@ -157,7 +157,7 @@ public class SmsUserVO implements java.io.Serializable {
      * 
      * @return 性别
      */
-    public Integer getSex() {
+    public String getSex() {
         return this.sex;
     }
      
@@ -167,7 +167,7 @@ public class SmsUserVO implements java.io.Serializable {
      * @param sex
      *          性别，0：男；1：女
      */
-    public void setSex(Integer sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
     
@@ -271,7 +271,7 @@ public class SmsUserVO implements java.io.Serializable {
      * 
      * @return 状态
      */
-    public Integer getStatus() {
+    public String getStatus() {
         return this.status;
     }
      
@@ -281,7 +281,7 @@ public class SmsUserVO implements java.io.Serializable {
      * @param status
      *          状态，0：禁用；1：启用
      */
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

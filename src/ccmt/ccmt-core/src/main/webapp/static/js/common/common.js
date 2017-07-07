@@ -46,11 +46,11 @@ function getCtx() {
 	return $("#ctx").val();
 }
 
-///**
-// * CCMT数据字典
-// */
-//var ccmtDd = parent.julyDd;
-//
+/**
+ * CCMT数据字典
+ */
+var ccmtDd = parent.ccmtDdSource;
+
 //(function($) {
 //	/**
 //	 * CCMT插件库
@@ -140,7 +140,7 @@ function getCtx() {
 //    		callback: function(data, pagination){
 //    			ag.callback(data, pagination);
 //    		},
-//    		locator: "data.list",
+//    		locator: "data.data",
 //    		totalNumberLocator : "data.total",
 //    		pageSize: 2,
 //    		alias : {

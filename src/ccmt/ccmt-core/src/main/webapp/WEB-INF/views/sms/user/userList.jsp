@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户列表</title>
-
+<link href="${ctx}/static/css/pagination.css" rel="stylesheet">
 <style>
 #test {
     width:100%;
@@ -61,7 +61,7 @@
                   	
                   	<div class="x_content">
 						<div class="row csb-row">
-							<form id="queryForm">
+							<form id="searchForm">
 								<div class="col-md-3 col-sm-12 col-xs-12 form-group">
 									<span class="csb-label">用户名：</span>
 									<input name="username" type="text" class="form-control csb-control"/>
@@ -117,9 +117,9 @@
 												<td>{{user.id}}</td>
 												<td>{{user.username}}</td>
 												<td>{{user.name}}</td>
-												<td>{{user.sex}}</td>
+												<td>{@out ccmtDd.tran(user.sex, 'SEX')}</td>
 												<td>{{user.birthday}}</td>
-												<td>{{user.status}}</td>
+												<td>{@out ccmtDd.tran(user.status, 'SMS_USER_STATUS')}</td>
 												<td>
 													<button class="btn btn-info btn-xs" title="详情">详</button>
 													{@if user.status == '1'}
@@ -134,13 +134,17 @@
 								</tbody>
                        		</table>
 						</div>
+						
+						<div id="pageBar" class="row pgb-row">
+						</div>
+						
                   	</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<a href="javascript:shield()">打开遮罩</a>
+	<!-- <a href="javascript:shield()">打开遮罩</a>
 	<div id="test"></div>
 	<div id="log_window">
 		<a href="javascript:cancel_shield()">关闭</a>
@@ -149,9 +153,10 @@
 	<div id="ccmt-shade" class="ccmtShade"></div>
 	<div id="" class="ccmtShadeWindow">
 		
-	</div>
+	</div> -->
 	
 	<script type="text/javascript" src="${ctx}/static/js/sms/user/userList.js"></script>
+	<script type="text/javascript" src="${ctx}/static/js/plugins/pagination-july.js"></script>
 	<script>
 function shield(){
     var s = document.getElementById("test");

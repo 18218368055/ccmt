@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.qylyx.ccmt.sms.entity.user.co.SmsUserListCo;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
-import com.qylyx.ccmt.sms.service.ISmsUserService;
+import com.qylyx.ccmt.sms.service.user.ISmsUserService;
 import com.qylyx.july.salog.annotation.Salog;
 import com.qylyx.remex.framework.base.entity.page.Page;
 import com.qylyx.remex.framework.base.entity.page.PageCo;
@@ -75,5 +75,17 @@ public class SmsUserController {
 	public Object update(SmsUserVO vo) {
 		vo.setName(vo.getName() + "uu");
 		return vo;
+	}
+	
+	/**
+	 * 启用/禁用用户状态
+	 * @return
+	 */
+	@Salog("启用/禁用用户状态")
+	@RequestMapping("changeUserStatus")
+	@ResponseBody
+	public Object changeUserStatus(Long id, String status) {
+		smsUserService.changeUserStatus(id, status);
+		return null;
 	}
 }

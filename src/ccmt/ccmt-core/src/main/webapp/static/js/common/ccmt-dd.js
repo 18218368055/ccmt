@@ -1,11 +1,11 @@
-//*** july数据字典 ***
+//*** ccmt数据字典 ***
 
 /**
- * july数据字典
+ * ccmt数据字典
  */
-var julyDd = {
+var ccmtDdSource = {
 	/**
-	 * july数据字典设置参数
+	 * ccmt数据字典设置参数
 	 */
 	setting : {},
 	/**
@@ -28,7 +28,7 @@ var julyDd = {
 		var source = this.source();
 		for (var key in source) {
 			if (typeCode == source[key].typeCode)
-				return source[key].itemList;
+				return source[key].dictList;
 		}
 		return {};
 	},

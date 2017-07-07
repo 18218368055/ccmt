@@ -11,7 +11,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
-import com.qylyx.ccmt.sms.service.ISmsUserService;
+import com.qylyx.ccmt.sms.service.user.ISmsUserService;
 import com.qylyx.remex.base.entity.Result;
 
 /**

@@ -4,6 +4,47 @@ var remex = {};
 
 (function($) {
 	
+	//==================== 分页控件 ====================
+	/**
+	 * 分页控件
+	 * <pre>
+	 * 入参ag {}：
+	 * url : 必传，地址
+	 * data : 可选，{}格式，条件参数数据
+	 * before : 可选，fn()，翻页查询前的处理逻辑
+	 * callback : 必传，fn(data, pagination)，data：数据
+	 * 			  翻页查询后的回调函数。
+	 * </pre>
+	 */
+    $.fn.remexPage = function(ag) {    
+        ag = ag || {};
+        $(this).pagination({
+        	dataSource : ag.url,
+        	data : ag.data,
+    		ajax: {
+		        beforeSend: function() {
+		        	if (ag.before)
+		        		ag.before();
+		        }
+    		},
+    		callback: function(data, pagination){
+    			ag.callback(data, pagination);
+    		},
+    		locator: "data.data",
+    		totalNumberLocator : "data.total",
+    		pageSize: 10,
+    		alias : {
+    			pageNumber : "pageNum",
+    		},
+    		showGoInput: false,
+    		showGoButton: false,
+    		showPageNumbers: true,
+    	    showNavigator: true,
+    	    formatNavigator: '<%= currentPage %>/<%= totalPage %>页，共<%= totalNumber %>条',
+        });
+    }
+  //==================== 分页控件 End ====================
+	
 	//==================== jqGrid ====================
 	/**
 	 * 默认配置一些jqGrid的参数

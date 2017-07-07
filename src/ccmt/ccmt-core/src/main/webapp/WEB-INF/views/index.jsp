@@ -151,12 +151,12 @@
 	<!-- 数据字典 -->
 	<script type="text/javascript" src="${ctx}/static/js/common/ccmt-dd.js"></script>
 	
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 		//初始化数据字典
-		julyDd.init({
-			source : ${julyDictSource}
+		ccmtDdSource.init({
+			source : ${ccmtDictSource}
 		});
-	</script> -->
+	</script>
 </body>
 </html>
 

@@ -155,7 +155,7 @@ var july = {};
 		 */
 		ajax : function(ag) {
 			ag = ag || {};
-			var self = $.ccmt;
+			var self = this;
 			//防重复提交的相关操作
 			var prFlag = ag.prFlag;
 			var isPrFlag = july.isNotEmpty(prFlag);
@@ -207,7 +207,7 @@ var july = {};
 		 * 重置防重复提交的标识
 		 */
 		ajaxResetPrFlag : function(flag) {
-			var self = $.ccmt;
+			var self = this;
 			self.ajaxPrFlagBox[flag] = false;
 		},
 	});

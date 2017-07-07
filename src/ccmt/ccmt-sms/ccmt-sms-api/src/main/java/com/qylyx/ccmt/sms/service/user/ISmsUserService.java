@@ -1,4 +1,4 @@
-package com.qylyx.ccmt.sms.service;
+package com.qylyx.ccmt.sms.service.user;
 
 import com.qylyx.ccmt.sms.entity.user.co.SmsUserListCo;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
@@ -34,4 +34,19 @@ public interface ISmsUserService {
 	 * @return
 	 */
 	public Result<SmsUserVO> add(SmsUserVO vo);
+	
+	/**
+	 * 修改用户
+	 * @param vo
+	 * @return
+	 */
+	public Result<SmsUserVO> update(SmsUserVO vo);
+	
+	/**
+	 * 启用/禁用用户状态
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	public Result<Void> changeUserStatus(Long id, String status);
 }

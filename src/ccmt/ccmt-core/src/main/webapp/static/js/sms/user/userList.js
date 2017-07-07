@@ -16,19 +16,18 @@ $(document).ready(function(){
  * 查询
  */
 function search() {
-	$("#tableDataList").empty();
-	
-	july.ajax({
+	$('#pageBar').remexPage({
 		url : getCtx() + "/sms/user/queryList",
-		data : {},
-		success : function(result) {
-			if (result.code == "100") {
-				var html = juicer(tempDataList, {dataList : result.data.data});
-				$("#tableDataList").html(html);
-			} else {
-				emsg("查询失败！");
-			}
-		}
+	    data : function() {
+	    	return $("#searchForm").serializeMap();
+	    },
+		before : function() {
+			$("#tableDataList").empty();
+		},
+	    callback: function(data, pagination){
+	    	var html = juicer(tempDataList, {dataList : data});
+			$("#tableDataList").html(html);
+	    }
 	});
 }
 
@@ -36,17 +35,25 @@ function search() {
  * 改变状态
  */
 function changeStatus(id, status) {
-	alert("功能暂未开通！");
-//	july.ajax({
-//		url : getCtx() + "/sms/user/changeStatus",
-//		data : {
-//			id : id,
-//			status : status,
-//		},
-//		success : function(result) {
-//			
-//		}
-//	});
+	var itMsg = status == 0 ? "禁用" : "启用";
+	cfMsg("是否" + itMsg + "此用户？", function() {
+		july.ajax({
+			url : getCtx() + "/sms/user/changeUserStatus",
+			data : {
+				id : id,
+				status : status
+			},
+			prFlag : "changeUserStatus",
+			success : function(result) {
+				if (result.code == "100") {
+					rmsg(itMsg + "成功！");
+					search();
+				} else {
+					fmsg(itMsg + "失败！");
+				}
+			}
+		});
+	});
 }
 
 
