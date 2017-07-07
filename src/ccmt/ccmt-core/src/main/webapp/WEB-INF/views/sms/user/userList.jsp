@@ -7,6 +7,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户列表</title>
+
+<style>
+#test {
+    width:100%;
+    height:100%;
+    background-color:#000;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:2;
+    opacity:0.3;
+    /*兼容IE8及以下版本浏览器*/
+    filter: alpha(opacity=30);
+    display:none;
+}
+
+#log_window {
+    width:200px;
+    height:200px;
+    background-color:#FF0;    
+    margin: auto;
+    position: absolute;
+    z-index:3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display:none;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -110,6 +140,34 @@
 		</div>
 	</div>
 	
+	<a href="javascript:shield()">打开遮罩</a>
+	<div id="test"></div>
+	<div id="log_window">
+		<a href="javascript:cancel_shield()">关闭</a>
+	</div>
+	
+	<div id="ccmt-shade" class="ccmtShade"></div>
+	<div id="" class="ccmtShadeWindow">
+		
+	</div>
+	
 	<script type="text/javascript" src="${ctx}/static/js/sms/user/userList.js"></script>
+	<script>
+function shield(){
+    var s = document.getElementById("test");
+    s.style.display = "block";
+    
+    var l = document.getElementById("log_window");
+    l.style.display = "block";
+}
+
+function cancel_shield(){
+    var s = document.getElementById("test");
+    s.style.display = "none";
+    
+    var l = document.getElementById("log_window");
+    l.style.display = "none";
+}
+</script>
 </body>
 </html>
