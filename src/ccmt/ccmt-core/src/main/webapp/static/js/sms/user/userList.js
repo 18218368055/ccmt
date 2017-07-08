@@ -1,5 +1,7 @@
 // **** 用户列表 ****
 
+//数据缓存
+var dataCache;
 //数据列表模板
 var tempDataList;
 
@@ -25,6 +27,7 @@ function search() {
 			$("#tableDataList").empty();
 		},
 	    callback: function(data, pagination){
+	    	dataCache = data || [];
 	    	var html = juicer(tempDataList, {dataList : data});
 			$("#tableDataList").html(html);
 	    }
@@ -56,6 +59,29 @@ function changeStatus(id, status) {
 	});
 }
 
+/**
+ * 打开详情界面
+ */
+function openView(index) {
+	$("#ccmtShade").show();
+	$("#viewPanel").show();
+	
+	var data = dataCache[index];
+	$("#vpUsername").text(data.username);
+	$("#vpName").text(data.name);
+	$("#vpStatus").text(ccmtDd.tran(data.status, 'SMS_USER_STATUS'));
+	$("#vpBirthday").text(data.birthday);
+	$("#vpSex").text(ccmtDd.tran(data.sex, 'SEX'));
+	$("#vpCreateTime").text(data.createTime);
+}
+
+/**
+ * 关闭详情界面
+ */
+function closeView() {
+	$("#ccmtShade").hide();
+	$("#viewPanel").hide();
+}
 
 
 

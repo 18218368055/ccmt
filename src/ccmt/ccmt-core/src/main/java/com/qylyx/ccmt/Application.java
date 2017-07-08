@@ -2,6 +2,9 @@ package com.qylyx.ccmt;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
+
+import com.qylyx.ccmt.core.context.ApplicationContextUtils;
 
 /**
  * 启动类
@@ -16,6 +19,8 @@ public class Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(Application.class).web(true).run(args);
+		ApplicationContext context = new SpringApplicationBuilder(Application.class).web(true).run(args);
+		//将ApplicationContext注入到一个容器中，用于后续的一些需要ApplicationContext的操作
+		ApplicationContextUtils.setApplicationContext(context);
 	}
 }

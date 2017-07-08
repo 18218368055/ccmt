@@ -28,22 +28,22 @@ public class SmsUserController {
 	ISmsUserService smsUserService;
 	
 	/**
-	 * 到用户列表界面
+	 * 到列表界面
 	 * @return
 	 */
-	@Salog("到用户列表界面")
+	@Salog("到列表界面")
 	@RequestMapping("toList")
 	public String toList() {
 		return "sms/user/userList";
 	}
 	
 	/**
-	 * 查询用户列表
+	 * 查询列表
 	 * @param pageCo
 	 * @param co
 	 * @return
 	 */
-	@Salog("查询用户列表")
+	@Salog("查询列表")
 	@RequestMapping("queryList")
 	@ResponseBody
 	public Object queryList(PageCo pageCo, SmsUserListCo co) {
@@ -52,11 +52,11 @@ public class SmsUserController {
 	}
 	
 	/**
-	 * 新增用户
+	 * 新增
 	 * @param vo
 	 * @return
 	 */
-	@Salog("新增用户")
+	@Salog("新增")
 	@RequestMapping("add")
 	@ResponseBody
 	public Object add(SmsUserVO vo) {
@@ -65,11 +65,11 @@ public class SmsUserController {
 	}
 	
 	/**
-	 * 修改用户
+	 * 修改
 	 * @param vo
 	 * @return
 	 */
-	@Salog("修改用户")
+	@Salog("用户")
 	@RequestMapping("update")
 	@ResponseBody
 	public Object update(SmsUserVO vo) {

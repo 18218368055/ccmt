@@ -51,9 +51,10 @@
 		            			<li>
 		            				<a><i class="fa fa-home"></i> 系统管理 <span class="fa fa-chevron-down"></span></a>
 			                    	<ul class="nav child_menu">
-			                    		<li><a href="index.html">用户管理</a></li>
-			                    		<li><a href="index.html">角色管理</a></li>
-			                      		<li><a href="index.html">权限管理</a></li>
+			                    		<li><a onclick="turnMenu('${ctx}/sms/user/toList')" href="javascript:;">用户管理</a></li>
+			                    		<li><a onclick="turnMenu('${ctx}/sms/sbd/dict/toList')" href="javascript:;">数据字典</a></li>
+			                    		<li><a onclick="" href="javascript:;">角色管理</a></li>
+			                      		<li><a href="javascript:;">权限管理</a></li>
 			                    	</ul>
 			                  	</li>
 		            		</ul>
@@ -104,7 +105,7 @@
 			</div>
 			 <!-- scrolling="no" -->
 			<div class="right_col" role="main">
-				<iframe id="iframepage" src="${ctx}/sms/user/toList" frameborder="0" width="100%" height="100%">
+				<iframe id="indexFrame" src="${ctx}/sms/user/toList" frameborder="0" width="100%" height="100%">
 				</iframe>
 			</div>
 		</div>
@@ -150,6 +151,7 @@
 	
 	<!-- 数据字典 -->
 	<script type="text/javascript" src="${ctx}/static/js/common/ccmt-dd.js"></script>
+	<script type="text/javascript" src="${ctx}/static/js/sys/index.js"></script>
 	
 	<script type="text/javascript">
 		//初始化数据字典

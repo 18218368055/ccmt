@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib version="2.0" xmlns="http://Java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd">
+	<jspversion>1.2</jspversion>
+	<tlibversion>1.0</tlibversion>
+	<shortname>ccmt</shortname>
+	<description>ccmt标签库</description>
+	<display-name>ccmt core</display-name>
+	<!-- tag -->
+  
+	<!-- fn -->
+	<function>
+		<description>数据字典翻译</description>
+		<name>dict</name>
+		<function-class>com.qylyx.ccmt.core.tld.CcmtFunctions</function-class>
+		<function-signature>java.lang.String dict(java.lang.String, java.lang.String)</function-signature>
+	</function>
+	<function>
+		<description>获取某一组数据字典</description>
+		<name>dictGroup</name>
+		<function-class>com.qylyx.ccmt.core.tld.CcmtFunctions</function-class>
+		<function-signature>java.util.List dictGroup(java.lang.String)</function-signature>
+	</function>
+</taglib>
+       
