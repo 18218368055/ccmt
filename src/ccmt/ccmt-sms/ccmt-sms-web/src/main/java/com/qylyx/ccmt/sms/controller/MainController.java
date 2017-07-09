@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictTypeDto;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
-import com.qylyx.ccmt.sms.service.sbd.dict.ISmsDictService;
+import com.qylyx.ccmt.sms.service.sbd.dict.ISmsDictTypeService;
 import com.qylyx.july.salog.annotation.Salog;
 
 /**
@@ -24,7 +24,7 @@ import com.qylyx.july.salog.annotation.Salog;
 @RequestMapping("/")
 public class MainController {
 	@Autowired
-	ISmsDictService smsDictService;
+	ISmsDictTypeService smsDictTypeService;
 	
 	/**
 	 * 首页
@@ -34,7 +34,7 @@ public class MainController {
 	@RequestMapping("index")
 	public String index(Model model) {
 		//数据字典
-		List<SmsDictTypeDto> ccmtDictSource = smsDictService.queryHdDict().getData();
+		List<SmsDictTypeDto> ccmtDictSource = smsDictTypeService.queryHdDict().getData();
 		model.addAttribute("ccmtDictSource", JSONObject.toJSON(ccmtDictSource));
 		return "index";
 	}

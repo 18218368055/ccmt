@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
-@MapperScan("com.qylyx.ccmt.sms.dao.user")
+@MapperScan("com.qylyx.ccmt.*.dao")
 public class MybatisConfig {
 	
 	@Autowired

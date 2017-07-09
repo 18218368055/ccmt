@@ -1,3 +1,4 @@
+package com.qylyx.ccmt.sms.entity.sbd.dict.vo;
 /*
  * Welcome to use the TableGo Tools.
  * 
@@ -9,37 +10,39 @@
  * Email:edinsker@163.com
  * Version:5.0.0
  */
-package com.qylyx.ccmt.sms.entity.user.vo;
 
 import java.util.Date;
 
 /**
- * 用户表(SMS_USER)
+ * 数据字典表(SMS_DICT)
  * 
  * @author bianj
  * @version 1.0.0 2017-07-09
  */
-public class SmsUserVO implements java.io.Serializable {
+public class SmsDictVO implements java.io.Serializable {
     /** 版本号 */
-    private static final long serialVersionUID = -6093557167916843989L;
+    private static final long serialVersionUID = 7561841151801002404L;
 
     /** 自增ID */
     private Long id;
 
-    /** 用户名 */
-    private String username;
+    /** 字典代码 */
+    private String code;
 
-    /** 密码 */
-    private String password;
-
-    /** 名称 */
+    /** 字典名称 */
     private String name;
 
-    /** 性别，0：男；1：女 */
-    private String sex;
+    /** 字典类型代码 */
+    private String typeCode;
 
-    /** 生日 */
-    private Date birthday;
+    /** 状态，0：禁用，1：启用 */
+    private String status;
+
+    /** 排序 */
+    private Integer sort;
+
+    /** 备注 */
+    private String remark;
 
     /** 创建人 */
     private String creator;
@@ -52,9 +55,6 @@ public class SmsUserVO implements java.io.Serializable {
 
     /** 修改时间 */
     private Date modifyTime;
-
-    /** 状态，0：禁用；1：启用 */
-    private String status;
 
     /**
      * 获取自增ID
@@ -76,98 +76,117 @@ public class SmsUserVO implements java.io.Serializable {
     }
 
     /**
-     * 获取用户名
+     * 获取字典代码
      * 
-     * @return 用户名
+     * @return 字典代码
      */
-    public String getUsername() {
-        return this.username;
+    public String getCode() {
+        return this.code;
     }
 
     /**
-     * 设置用户名
+     * 设置字典代码
      * 
-     * @param username
-     *          用户名
+     * @param code
+     *          字典代码
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     /**
-     * 获取密码
+     * 获取字典名称
      * 
-     * @return 密码
-     */
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
-     * 设置密码
-     * 
-     * @param password
-     *          密码
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * 获取名称
-     * 
-     * @return 名称
+     * @return 字典名称
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * 设置名称
+     * 设置字典名称
      * 
      * @param name
-     *          名称
+     *          字典名称
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * 获取性别，0：男；1：女
+     * 获取字典类型代码
      * 
-     * @return 性别
+     * @return 字典类型代码
      */
-    public String getSex() {
-        return this.sex;
+    public String getTypeCode() {
+        return this.typeCode;
     }
 
     /**
-     * 设置性别，0：男；1：女
+     * 设置字典类型代码
      * 
-     * @param sex
-     *          性别
+     * @param typeCode
+     *          字典类型代码
      */
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setTypeCode(String typeCode) {
+        this.typeCode = typeCode;
     }
 
     /**
-     * 获取生日
+     * 获取状态，0：禁用，1：启用
      * 
-     * @return 生日
+     * @return 状态
      */
-    public Date getBirthday() {
-        return this.birthday;
+    public String getStatus() {
+        return this.status;
     }
 
     /**
-     * 设置生日
+     * 设置状态，0：禁用，1：启用
      * 
-     * @param birthday
-     *          生日
+     * @param status
+     *          状态
      */
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    /**
+     * 获取排序
+     * 
+     * @return 排序
+     */
+    public Integer getSort() {
+        return this.sort;
+    }
+
+    /**
+     * 设置排序
+     * 
+     * @param sort
+     *          排序
+     */
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    /**
+     * 获取备注
+     * 
+     * @return 备注
+     */
+    public String getRemark() {
+        return this.remark;
+    }
+
+    /**
+     * 设置备注
+     * 
+     * @param remark
+     *          备注
+     */
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     /**
@@ -244,24 +263,5 @@ public class SmsUserVO implements java.io.Serializable {
      */
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-    /**
-     * 获取状态，0：禁用；1：启用
-     * 
-     * @return 状态
-     */
-    public String getStatus() {
-        return this.status;
-    }
-
-    /**
-     * 设置状态，0：禁用；1：启用
-     * 
-     * @param status
-     *          状态
-     */
-    public void setStatus(String status) {
-        this.status = status;
     }
 }

@@ -13,7 +13,7 @@ import com.qylyx.remex.framework.base.entity.page.Page;
 import com.qylyx.remex.framework.base.entity.page.PageCo;
 
 /**
- * 用户管理con
+ * 用户管理controller
  * troller
  * 
  * @author Qiaoxin.Hong

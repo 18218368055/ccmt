@@ -8,7 +8,7 @@ import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
  * @author Qiaoxin.Hong
  *
  */
-public interface SmsUserDao {
+public interface ISmsUserDao {
 	
 	/**
 	 * 登录

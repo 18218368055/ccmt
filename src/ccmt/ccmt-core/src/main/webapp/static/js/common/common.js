@@ -49,9 +49,30 @@ function getCtx() {
 /**
  * CCMT数据字典
  */
-var ccmtDd = parent.ccmtDdSource;
+//var ccmtDd = parent.ccmtDdSource;
 
-//(function($) {
+var ccmtDd = {
+	/**
+	 * 数据字典数据源
+	 */
+	source : function() {
+		return parent.ccmtDdSource;
+	},
+	/**
+	 * 根据类型编码取得一组数据字典
+	 */
+	dictGroup : function(typeCode) {
+		return this.source().dictGroup(typeCode);
+	},
+	/**
+	 * 翻译数据字典
+	 */
+	tran : function(key, code) {
+		return this.source().tran(key, code);
+	},
+};
+
+(function($) {
 //	/**
 //	 * CCMT插件库
 //	 */
@@ -154,48 +175,48 @@ var ccmtDd = parent.ccmtDdSource;
 //        });
 //    }
 //    
-//    /**
-//     * jQuery valudate通用实现
-//     */
-//    $.fn.ccmtValidate = function(ag) {
-//    	var aguse = {
-//    		/**
-//    		 * 是否debug模式
-//    		 */
-//			debug: false,
-//    		/**
-//    		 * 验证失败的操作
-//    		 */
-//			showErrors : function(errorMap, errorList) {
-//				//加输入框边框红色框效果
-//    			if (errorList.length != 0) {
-//    				var em = $(errorList[0].element);
-//    				var row = em.parents(".efc-row");
-//    				if (!row.hasClass("bad"))
-//    					row.addClass("bad");
-//    			}
-//				this.defaultShowErrors();
-//    		},
-//    		/**
-//    		 * 错误样式调整
-//    		 */
-//			errorPlacement: function(error, element) { 
-//				var row = element.parents(".efc-row");
-//				row.find(".alert").html(error)
-//			},
-//			/**
-//			 * 验证成功的操作
-//			 */
-//			success : function(label) {
-//				//移除输入框边框红色框效果
-//				var row = label.parents(".efc-row");
-//				row.removeClass("bad");
-//			},
-//    	}
-//    	$.extend(aguse, ag);
-//    	$(this).validate(aguse);
-//    }
-//})(jQuery);
+    /**
+     * jQuery valudate通用实现
+     */
+    $.fn.ccmtValidate = function(ag) {
+    	var aguse = {
+    		/**
+    		 * 是否debug模式
+    		 */
+			debug: false,
+    		/**
+    		 * 验证失败的操作
+    		 */
+			showErrors : function(errorMap, errorList) {
+				//加输入框边框红色框效果
+    			if (errorList.length != 0) {
+    				var em = $(errorList[0].element);
+    				var row = em.parents(".efc-row");
+    				if (!row.hasClass("bad"))
+    					row.addClass("bad");
+    			}
+				this.defaultShowErrors();
+    		},
+    		/**
+    		 * 错误样式调整
+    		 */
+			errorPlacement: function(error, element) { 
+				var row = element.parents(".efc-row");
+				row.find(".alert").html(error)
+			},
+			/**
+			 * 验证成功的操作
+			 */
+			success : function(label) {
+				//移除输入框边框红色框效果
+				var row = label.parents(".efc-row");
+				row.removeClass("bad");
+			},
+    	}
+    	$.extend(aguse, ag);
+    	$(this).validate(aguse);
+    }
+})(jQuery);
 
 
 

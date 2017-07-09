@@ -10,46 +10,51 @@
  * Version:3.0.0
  */
 
-package com.qylyx.ccmt.sms.entity.sbd.dict.vo;
+package com.qylyx.ccmt.sms.entity.user.vo;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 数据字典类型表
+ * 用户表
  * 
  * @author Qiaoxin.Hong
  *
  */
 @Entity
-@Table(name = "SM_DICT_TYPE")
-public class SmDictTypeVO implements java.io.Serializable {
+@Table(name = "SMS_USER")
+public class SmsUserVO2 implements java.io.Serializable {
     /** 版本号 */
-    private static final long serialVersionUID = 551245342331332176L;
+    private static final long serialVersionUID = -2205668998937931974L;
     
     /** 主键 */
     @Id
     @Column(name = "ID")
-    private Integer id;
+    private Long id;
     
-    /** 字典类型代码 */
-    @Column(name = "TYPE_CODE")
-    private String typeCode;
+    /** 用户名 */
+    @Column(name = "USERNAME")
+    private String username;
     
-    /** 字典类型名称 */
-    @Column(name = "TYPE_NAME")
-    private String typeName;
+    /** 密码 */
+    @Column(name = "PASSWORD")
+    private String password;
     
-    /** 状态，0：禁用；1：启用 */
-    @Column(name = "STATUS")
-    private String status;
+    /** 名称 */
+    @Column(name = "NAME")
+    private String name;
     
-    /** 备注 */
-    @Column(name = "REMARK")
-    private String remark;
+    /** 性别，0：男；1：女 */
+    @Column(name = "SEX")
+    private String sex;
+    
+    /** 生日 */
+    @Column(name = "BIRTHDAY")
+    private Date birthday;
     
     /** 创建人 */
     @Column(name = "CREATOR")
@@ -67,12 +72,16 @@ public class SmDictTypeVO implements java.io.Serializable {
     @Column(name = "MODIFY_TIME")
     private Date modifyTime;
     
+    /** 状态，0：禁用；1：启用 */
+    @Column(name = "STATUS")
+    private String status;
+    
     /**
      * 获取主键
      * 
      * @return 主键
      */
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
      
@@ -82,84 +91,103 @@ public class SmDictTypeVO implements java.io.Serializable {
      * @param id
      *          主键
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     
     /**
-     * 获取字典类型代码
+     * 获取用户名
      * 
-     * @return 字典类型代码
+     * @return 用户名
      */
-    public String getTypeCode() {
-        return this.typeCode;
+    public String getUsername() {
+        return this.username;
     }
      
     /**
-     * 设置字典类型代码
+     * 设置用户名
      * 
-     * @param typeCode
-     *          字典类型代码
+     * @param username
+     *          用户名
      */
-    public void setTypeCode(String typeCode) {
-        this.typeCode = typeCode;
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     /**
-     * 获取字典类型名称
+     * 获取密码
      * 
-     * @return 字典类型名称
+     * @return 密码
      */
-    public String getTypeName() {
-        return this.typeName;
+    public String getPassword() {
+        return this.password;
     }
      
     /**
-     * 设置字典类型名称
+     * 设置密码
      * 
-     * @param typeName
-     *          字典类型名称
+     * @param password
+     *          密码
      */
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     /**
-     * 获取状态，0：禁用；1：启用
+     * 获取名称
      * 
-     * @return 状态
+     * @return 名称
      */
-    public String getStatus() {
-        return this.status;
+    public String getName() {
+        return this.name;
     }
      
     /**
-     * 设置状态，0：禁用；1：启用
+     * 设置名称
      * 
-     * @param status
-     *          状态，0：禁用；1：启用
+     * @param name
+     *          名称
      */
-    public void setStatus(String status) {
-        this.status = status;
+    public void setName(String name) {
+        this.name = name;
     }
     
     /**
-     * 获取备注
+     * 获取性别，0：男；1：女
      * 
-     * @return 备注
+     * @return 性别
      */
-    public String getRemark() {
-        return this.remark;
+    public String getSex() {
+        return this.sex;
     }
      
     /**
-     * 设置备注
+     * 设置性别，0：男；1：女
      * 
-     * @param remark
-     *          备注
+     * @param sex
+     *          性别，0：男；1：女
      */
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    
+    /**
+     * 获取生日
+     * 
+     * @return 生日
+     */
+    public Date getBirthday() {
+        return this.birthday;
+    }
+     
+    /**
+     * 设置生日
+     * 
+     * @param birthday
+     *          生日
+     */
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
     
     /**
@@ -236,5 +264,24 @@ public class SmDictTypeVO implements java.io.Serializable {
      */
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
+    }
+    
+    /**
+     * 获取状态，0：禁用；1：启用
+     * 
+     * @return 状态
+     */
+    public String getStatus() {
+        return this.status;
+    }
+     
+    /**
+     * 设置状态，0：禁用；1：启用
+     * 
+     * @param status
+     *          状态，0：禁用；1：启用
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

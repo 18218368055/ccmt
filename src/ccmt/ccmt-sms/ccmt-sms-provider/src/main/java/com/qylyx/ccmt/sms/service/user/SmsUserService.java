@@ -72,8 +72,9 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	}
 
 	/**
-	 * 查询用户列表
-	 * @param co 查询条件
+	 * 查询列表
+	 * @param pageCo 分页参数
+	 * @param co 条件
 	 * @return
 	 */
 	@Salog("查询用户列表")

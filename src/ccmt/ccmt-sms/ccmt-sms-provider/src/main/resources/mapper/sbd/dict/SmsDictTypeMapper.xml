@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 数据字典类型 -->
+<mapper namespace="com.qylyx.ccmt.sms.dao.sbd.dict.ISmsDictTypeDao">
+	<sql id="resultCols">
+		id, type_code, type_name,  status, remark, creator, create_time, modifier, modify_time
+	</sql>
+	
+	<!-- 系统使用的数据字典结果集 -->
+	<resultMap id="hdDictResult" type="com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictTypeDto">
+		<result property="typeCode" column="type_code"/>
+		<result property="typeName" column="type_name"/>
+		<collection property="dictList" column="type_code" 
+			select="com.qylyx.ccmt.sms.dao.sbd.dict.ISmsDictDao.queryHdDict"/>
+	</resultMap>
+	
+	<!-- 获取系统使用的数据字典 -->
+	<select id="queryHdDict" resultMap="hdDictResult">
+		select type_code, type_name from sms_dict_type t where t.status = 1;
+	</select>
+	
+	<!-- 保存 -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" 
+		parameterType="com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictTypeVO">
+		insert into sms_dict_type (
+				type_code,
+				type_name, 
+				status,
+				remark,
+				creator,
+				create_time,
+				modifier,
+				modify_time
+		) values (
+				#{typeCode},
+				#{typeName},
+				#{status},
+				#{remark},
+				#{creator},
+				#{createTime},
+				#{modifier},
+				#{modifyTime}
+		)
+	</insert>
+	
+	<!-- 查询列表 -->
+	<select id="queryList" resultType="com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictTypeVO"
+		parameterType="com.qylyx.ccmt.sms.entity.sbd.dict.co.SmsDictTypeListCo">
+		select <include refid="resultCols"/> from sms_dict_type		
+	</select>
+	
+	
+	
+</mapper>

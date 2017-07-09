@@ -1,15 +1,22 @@
-CREATE TABLE SMS_USER (
-	ID BIGINT(20) AUTO_INCREMENT PRIMARY KEY COMMENT '主键',
-	USERNAME VARCHAR(50) NOT NULL UNIQUE COMMENT '用户名',
-	PASSWORD VARCHAR(128) NOT NULL COMMENT '密码',
-	NAME VARCHAR(50) NOT NULL COMMENT '名称',
-	SEX CHAR(1) DEFAULT '1' COMMENT '性别，0：男；1：女',
-	BIRTHDAY DATE COMMENT '生日',
-	CREATOR VARCHAR(50) COMMENT '创建人',
-	CREATE_TIME TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-	MODIFIER VARCHAR(50) COMMENT '修改人',
-	MODIFY_TIME TIMESTAMP COMMENT '修改时间',
-	STATUS INT(1) NOT NULL COMMENT '状态，0：禁用；1：启用'
-)
-COMMENT = '用户表'
-;
+drop table if exists sms_user;
+
+/*==============================================================*/
+/* Table: sms_user                                              */
+/*==============================================================*/
+create table sms_user
+(
+   id                   bigint(20) not null auto_increment comment '自增ID',
+   username             varchar(50) not null comment '用户名',
+   password             varchar(128) not null comment '密码',
+   name                 varchar(50) not null comment '名称',
+   sex                  char(1) default '0' comment '性别，0：男；1：女',
+   birthday             date comment '生日',
+   creator              varchar(50) comment '创建人',
+   create_time          datetime comment '创建时间',
+   modifier             varchar(50) comment '修改人',
+   modify_time          datetime comment '修改时间',
+   status               char(1) not null default '0' comment '状态，0：禁用；1：启用',
+   primary key (id)
+);
+
+alter table sms_user comment '用户表';

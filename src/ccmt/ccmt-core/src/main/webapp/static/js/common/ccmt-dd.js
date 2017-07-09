@@ -28,9 +28,9 @@ var ccmtDdSource = {
 		var source = this.source();
 		for (var key in source) {
 			if (typeCode == source[key].typeCode)
-				return source[key].dictList;
+				return source[key].dictList || [];
 		}
-		return {};
+		return [];
 	},
 	/**
 	 * 翻译数据字典

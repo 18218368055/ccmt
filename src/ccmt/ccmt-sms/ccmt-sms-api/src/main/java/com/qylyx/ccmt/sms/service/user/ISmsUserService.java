@@ -22,8 +22,9 @@ public interface ISmsUserService {
 	public Result<SmsUserVO> login(String username);
 	
 	/**
-	 * 查询用户列表
-	 * @param co 查询条件
+	 * 查询列表
+	 * @param pageCo 分页参数
+	 * @param co 条件
 	 * @return
 	 */
 	public Result<Page<SmsUserVO>> queryUserList(PageCo pageCo, SmsUserListCo co);

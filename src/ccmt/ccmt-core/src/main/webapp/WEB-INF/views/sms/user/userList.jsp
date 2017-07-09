@@ -75,20 +75,20 @@
                         		</thead>
                         		<tbody id="tableDataList">
                        				<script type="text/template" id="tempDataList">
-										{@each dataList as user, index}
+										{@each dataList as data, index}
 											<tr>
-												<td>{{user.id}}</td>
-												<td>{{user.username}}</td>
-												<td>{{user.name}}</td>
-												<td>{@out ccmtDd.tran(user.sex, 'SEX')}</td>
-												<td>{{user.birthday}}</td>
-												<td>{@out ccmtDd.tran(user.status, 'SMS_USER_STATUS')}</td>
+												<td>{{data.id}}</td>
+												<td>{{data.username}}</td>
+												<td>{{data.name}}</td>
+												<td>{@out ccmtDd.tran(data.sex, 'SEX')}</td>
+												<td>{{data.birthday}}</td>
+												<td>{@out ccmtDd.tran(data.status, 'SMS_USER_STATUS')}</td>
 												<td>
 													<button onclick="openView({{index}})" class="btn btn-info btn-xs" title="详情">详</button>
-													{@if user.status == '1'}
-														<button onclick="changeStatus('{{user.id}}', '0')" class="btn btn-danger btn-xs" title="禁用">禁</button>
+													{@if data.status == '1'}
+														<button onclick="changeStatus('{{data.id}}', '0')" class="btn btn-danger btn-xs" title="禁用">禁</button>
 													{@else}
-														<button onclick="changeStatus('{{user.id}}', '1')" class="btn btn-danger btn-xs" title="启用">启</button>
+														<button onclick="changeStatus('{{data.id}}', '1')" class="btn btn-danger btn-xs" title="启用">启</button>
 													{@/if}
 												</td>
 											</tr>
@@ -113,7 +113,7 @@
 		<div class="row">
 			<div class="x_panel">
 				<div class="x_title">
-                   	<h2>用户列表<small></small></h2>
+                   	<h2>用户详情<small></small></h2>
                 	<div class="clearfix"></div>
            		</div>
            		
@@ -149,7 +149,7 @@
 	           		
 	           		<div class="vp-btns">
 						<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-4">
-							<button onclick="closeView()" class="btn btn-success ccmt-btn"> 取   消 </button>
+							<button onclick="closeView()" class="btn btn-primary ccmt-btn"> 取   消 </button>
 						</div>
 					</div>
 	           	</div>
