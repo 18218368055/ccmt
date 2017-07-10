@@ -582,11 +582,12 @@
         	$.each(totalNumberLocator.split('.'), function(index, item) {
         		totalNumberFilteredData = (totalNumberFilteredData ? totalNumberFilteredData : dataSource)[item];
         	});
-        	attributes.totalNumber = totalNumberFilteredData;
+        	attributes.totalNumber = totalNumberFilteredData || 0;
         	this.model.totalPage = this.getTotalPage();
         }
 
-        return filteredData || dataSource;
+        return dataSource;
+//        return filteredData || dataSource;
       },
 
       // Parse dataSource

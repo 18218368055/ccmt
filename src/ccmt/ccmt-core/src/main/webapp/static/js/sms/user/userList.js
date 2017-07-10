@@ -26,12 +26,36 @@ function search() {
 		before : function() {
 			$("#tableDataList").empty();
 		},
-	    callback: function(data, pagination){
-	    	dataCache = data || [];
-	    	var html = juicer(tempDataList, {dataList : data});
-			$("#tableDataList").html(html);
+	    callback : function(result, pagination){
+	    	var dataList;
+	    	if (result.code == "100") {
+	    		dataList = result.data.data || [];
+	    		//数据统一转换
+	    		dataTran(dataList);
+	    		//模板渲染
+	    		var html = juicer(tempDataList, {dataList : dataList});
+	    		$("#tableDataList").html(html);
+	    		
+	    	} else {
+	    		fmsg("查询失败！");
+	    	}
+	    	dataCache = dataList;
 	    }
 	});
+}
+
+/**
+ * 数据统一转换
+ */
+function dataTran(dataList) {
+	if (dataList) {
+		$.each(dataList, function(i, data) {
+			data.statusStr = ccmtDd.tran(data.status, 'SMS_USER_STATUS');
+			data.sexStr = ccmtDd.tran(data.sex, 'SEX');
+			data.birthdayStr = new Date(data.birthday).format("yyyy-MM-dd");
+			data.createTimeStr = new Date(data.createTime).format("yyyy-MM-dd hh:mm");
+		});
+	}
 }
 
 /**
@@ -67,12 +91,16 @@ function openView(index) {
 	$("#viewPanel").show();
 	
 	var data = dataCache[index];
-	$("#vpUsername").text(data.username);
-	$("#vpName").text(data.name);
-	$("#vpStatus").text(ccmtDd.tran(data.status, 'SMS_USER_STATUS'));
-	$("#vpBirthday").text(data.birthday);
-	$("#vpSex").text(ccmtDd.tran(data.sex, 'SEX'));
-	$("#vpCreateTime").text(data.createTime);
+	$("#viewPanel").valsByName({
+		setType : "text",
+		data : data,
+	});
+//	$("#vpUsername").text(data.username);
+//	$("#vpName").text(data.name);
+//	$("#vpStatus").text(ccmtDd.tran(data.status, 'SMS_USER_STATUS'));
+//	$("#vpBirthday").text(data.birthday);
+//	$("#vpSex").text(ccmtDd.tran(data.sex, 'SEX'));
+//	$("#vpCreateTime").text(data.createTime);
 }
 
 /**

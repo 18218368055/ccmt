@@ -80,9 +80,9 @@
 												<td>{{data.id}}</td>
 												<td>{{data.username}}</td>
 												<td>{{data.name}}</td>
-												<td>{@out ccmtDd.tran(data.sex, 'SEX')}</td>
-												<td>{{data.birthday}}</td>
-												<td>{@out ccmtDd.tran(data.status, 'SMS_USER_STATUS')}</td>
+												<td>{{data.sexStr}}</td>
+												<td>{{data.birthdayStr}}</td>
+												<td>{{data.statusStr}}</td>
 												<td>
 													<button onclick="openView({{index}})" class="btn btn-info btn-xs" title="详情">详</button>
 													{@if data.status == '1'}
@@ -122,34 +122,34 @@
 		           		<div class="">
 		                	<div class="vpcol3">
 		                		<div class="vpcol-label">用户名：</div>
-		                		<div id="vpUsername"></div>
+		                		<div name="username"></div>
 		                    </div>
 		                    <div class="vpcol3">
 		                		<div class="vpcol-label">姓名：</div>
-		                		<div id="vpName"></div>
+		                		<div name="name"></div>
 		                    </div>
 		                    <div class="vpcol3">
 		                		<div class="vpcol-label">状态：</div>
-		                		<div id="vpStatus"></div>
+		                		<div name="statusStr"></div>
 		                    </div>
 		                    <div class="vpcol3">
 		                		<div class="vpcol-label">生日：</div>
-		                		<div id="vpBirthday"></div>
+		                		<div name="birthdayStr"></div>
 		                    </div>
 		                    <div class="vpcol3">
 		                		<div class="vpcol-label">性别：</div>
-		                		<div id="vpSex"></div>
+		                		<div name="sexStr" id="vpSex"></div>
 		                    </div>
 		                    <div class="vpcol3">
 		                		<div class="vpcol-label">创建时间：</div>
-		                		<div id="vpCreateTime"></div>
+		                		<div name="createTimeStr"></div>
 		                    </div>
 						</div>
 	           		</div>
 	           		
 	           		<div class="vp-btns">
 						<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-4">
-							<button onclick="closeView()" class="btn btn-primary ccmt-btn"> 取   消 </button>
+							<button onclick="closeView()" class="btn btn-primary ccmt-btn"> 关   闭 </button>
 						</div>
 					</div>
 	           	</div>

@@ -134,6 +134,7 @@
 .view-panel .vp-content .vpcol3 {
 	width: 33.33%;
 	float: left;
+    margin-bottom: 20px;
 }
 .view-panel .vp-content .vpcol3 .vpcol-label {
 	float: left;

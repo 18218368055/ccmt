@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.qylyx.ccmt.sms.entity.user.co.SmsUserListCo;
@@ -43,12 +44,13 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 			user.setSex(random.nextInt(2) + "");
 			user.setBirthday(new Date());
 			user.setStatus(random.nextInt(2) + "");
+			user.setCreateTime(new Date());
 			itemUserList.add(user);
 		}
 		itemUserList.get(0).setUsername("admin");
 		itemUserList.get(0).setName("管理员");
 	}
-
+	
 	/**
 	 * 登录
 	 * @param username 用户名
@@ -70,6 +72,8 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 		}
 		return new Result<SmsUserVO>(smsUserVO);
 	}
+	
+	
 
 	/**
 	 * 查询列表
@@ -78,6 +82,7 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	 * @return
 	 */
 	@Salog("查询用户列表")
+	@Cacheable("")
 	@Override
 	public Result<Page<SmsUserVO>> queryUserList(PageCo pageCo, SmsUserListCo co) {
 		//验证分页条件

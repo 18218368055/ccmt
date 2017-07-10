@@ -47,7 +47,7 @@ public class SmsUserController {
 	@RequestMapping("queryList")
 	@ResponseBody
 	public Object queryList(PageCo pageCo, SmsUserListCo co) {
-		Page<SmsUserVO> page = smsUserService.queryUserList(pageCo, co).getData();
+		Page<SmsUserVO> page = smsUserService.queryUserList(pageCo, co).getDataWeb();
 		return page;
 	}
 	

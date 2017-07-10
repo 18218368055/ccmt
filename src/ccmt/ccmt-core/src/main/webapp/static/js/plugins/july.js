@@ -212,6 +212,81 @@ var july = {};
 		},
 	});
 	
+	//==================== 动态批处理值 ====================
+	$.extend(july, {
+		/**
+		 * 动态设置某些元素的值，可用于form或其它html的文本区域
+		 * 允许两种调用方式：
+		 * 		function(ag)
+		 * 		function(elem, data, mapper, nameAttr, setType)   elem、data为必传
+		 * 注：暂不考虑select、radio、checkbox的情况
+		 * 
+		 * ag入参 ：
+		 * 		elem : 节点，会提取此节点及此下级所有name属性节点
+		 * 		nameAttr :  name的属性类型，默认：name，其它可考虑julyname等自定义属性
+		 * 		setType : 设置值的方式，默认：val，方式：val | text 
+		 * 		data : 数据
+		 * 		mapper : 映射，主要设置name提取数据的一种方式，设置的name从此映射中取值，其它直接取data[name]
+		 * 				方式fn(name) ： 对某name进行特殊处理来得到值
+		 * 				方式string ： 以此值直接赋值
+		 */
+		valsByName : function() {
+			var ag;
+			//重载，多种调用方式的处理
+			if (arguments.length == 0) {
+				ag = {};
+			} else if (arguments.length == 1) {
+				ag = arguments[0];
+			} else {
+				ag = {
+					elem : arguments[0],
+					data : arguments[1],
+					mapper : arguments[2],
+					nameAttr : arguments[3],
+					setType : arguments[40],
+				}
+			}
+				
+			ag = ag || {};
+			var elem = $(ag.elem || "body");
+			var nameAttr = ag.nameAttr || "name";
+			var setType = ag.setType || "val";
+			var data = ag.data || {};
+			var mapper = ag.mapper || {};
+			
+			//以nameAttr提取此节点及此下级所有name属性节点
+			var allElems = elem.find("[" + nameAttr + "]");
+			if (july.isNotEmpty(elem.attr(nameAttr)))
+				allElems = $(allElems, elem);
+			
+			$.each(allElems, function(i, o) {
+				o = $(o);
+				var curName = o.attr(nameAttr);
+				
+				//取值
+				var curVal;
+				//如果有设置映射，则从映射中取
+				if (mapper.hasOwnProperty(curName)) {
+					var curMapper = mapper[curName];
+					if (typeof curMapper == "function")
+						curVal = curMapper(curName, data);
+					else
+						curVal = curMapper;
+				} else {  //没有设置映射，则直接从数据里取
+					curVal = data[curName];
+				}
+				curVal = curVal || "";
+				
+				//赋值
+				if (setType == "val")
+					$(o).val(curVal);
+				if (setType == "text")
+					$(o).text(curVal);
+			});
+		},
+	});
+	//==================== 动态批处理值 End ====================
+	
 	//==================== 其它 ====================
 	$.extend(july, {
 		/**
@@ -283,6 +358,44 @@ var july = {};
 	};
 	
 	/**
+	 * 动态设置某些元素的值，可用于form或其它html的文本区域
+	 * 
+	 * @param ag ：
+	 * 		elem : 节点，会提取此节点及此下级所有name属性节点
+	 * 		nameAttr :  name的属性类型，默认：name，其它可考虑julyname等自定义属性
+	 * 		setType : 设置值的方式，默认：val，方式：val | text 
+	 * 		data : 数据
+	 * 		mapper : 映射，主要设置name提取数据的一种方式，设置的name从此映射中取值，其它直接取data[name]
+	 * 				方式fn(name) ： 对某name进行特殊处理来得到值
+	 * 				方式string ： 以此值直接赋值
+	 */
+	$.fn.valsByName = function(ag) {
+		var aguse = {elem : this};
+		$.extend(aguse, ag);
+		july.valsByName(aguse);
+	}
+	
+	/**
+	 * 动态设置某些元素的值，可用于form或其它html的文本区域
+	 * @param ag ：
+	 * 		data : 数据
+	 * 		mapper : 映射，主要设置name提取数据的一种方式，设置的name从此映射中取值，其它直接取data[name]
+	 * 				方式fn(name) ： 对某name进行特殊处理来得到值
+	 * 		nameAttr :  name的属性类型，默认：name，其它可考虑julyname等自定义属性
+	 * 		setType : 设置值的方式，默认：val，方式：val | text
+	 * 		
+	 */
+	$.fn.valsByNameBasic = function(data, mapper, nameAttr, setType) {
+		var aguse = {
+			elem : this,
+			data : data,
+			mapper : mapper,
+			nameAttr : nameAttr
+		}
+		july.valsByName(aguse);
+	}
+	
+	/**
 	 * 将所有值进行前后空格的去除，再进行序列化
 	 */
 	$.fn.serializeTrim = function() {
@@ -303,3 +416,25 @@ var july = {};
 	
 })(jQuery);
 
+
+//暂时用   yyyy-MM-dd hh:mm:ss
+Date.prototype.format = function(fmt) { 
+    var o = { 
+       "M+" : this.getMonth()+1,                 //月份 
+       "d+" : this.getDate(),                    //日 
+       "h+" : this.getHours(),                   //小时 
+       "m+" : this.getMinutes(),                 //分 
+       "s+" : this.getSeconds(),                 //秒 
+       "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+       "S"  : this.getMilliseconds()             //毫秒 
+   }; 
+   if(/(y+)/.test(fmt)) {
+           fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+   }
+    for(var k in o) {
+       if(new RegExp("("+ k +")").test(fmt)){
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        }
+    }
+   return fmt; 
+}  
