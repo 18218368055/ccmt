@@ -42,7 +42,7 @@
 	
 	<!-- 查询列表 -->
 	<select id="queryList" resultType="com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictVO">
-		select <include refid="resultCols"/> from sms_dict where type_code = #{typeCode}	
+		select <include refid="resultCols"/> from sms_dict where type_code = #{typeCode}
 	</select>
 	
 	

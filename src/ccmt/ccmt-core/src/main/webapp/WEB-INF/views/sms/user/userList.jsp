@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="/WEB-INF/tld/ccmt.tld" prefix="ccmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -44,7 +43,7 @@
 								<div class="col-md-3 col-sm-12 col-xs-12 form-group">
 									<span class="csb-label">性别：</span>
 									<c:set var="dictList" value="${ccmt:dictGroup('SEX')}"/>
-									<select name="status" class="form-control csb-control">
+									<select name="sex" class="form-control csb-control">
 										<option value="">全部</option>
 										<c:forEach var="dict" items="${dictList}">
 											<option value="${dict.code}">${dict.name}</option>

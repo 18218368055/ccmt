@@ -47,7 +47,7 @@
 	<!-- 查询列表 -->
 	<select id="queryList" resultType="com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictTypeVO"
 		parameterType="com.qylyx.ccmt.sms.entity.sbd.dict.co.SmsDictTypeListCo">
-		select <include refid="resultCols"/> from sms_dict_type		
+		select <include refid="resultCols"/> from sms_dict_type
 	</select>
 	
 	

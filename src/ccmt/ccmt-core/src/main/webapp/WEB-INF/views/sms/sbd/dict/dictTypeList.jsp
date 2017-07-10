@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/WEB-INF/tld/ccmt.tld" prefix="ccmt"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -21,7 +22,24 @@
                   	<div class="x_content">
 						<div class="row csb-row">
 							<form id="searchForm">
-								
+								<div class="col-md-3 col-sm-12 col-xs-12 form-group">
+									<span class="csb-label">字典类型代码：</span>
+									<input name="typeCode" type="text" class="form-control csb-control"/>
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12 form-group">
+									<span class="csb-label">字典类型名称：</span>
+									<input name="typeName" type="text" class="form-control csb-control"/>
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12 form-group">
+									<span class="csb-label">状态：</span>
+									<c:set var="dictList" value="${ccmt:dictGroup('SMS_DICT_TYPE_STATUS')}"/>
+									<select name="status" class="form-control csb-control">
+										<option value="">全部</option>
+										<c:forEach var="dict" items="${dictList}">
+											<option value="${dict.code}">${dict.name}</option>
+										</c:forEach>
+									</select>
+								</div>
 							</form>
 						</div>
 						
