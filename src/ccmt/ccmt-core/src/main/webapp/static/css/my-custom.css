@@ -152,3 +152,15 @@
 	margin-top: 50px;
 }
 /* 详情dialog End */
+
+/* 树 End */
+.ccmt-tree-left {
+	width: 20%;	
+	float: left;
+}
+
+.ccmt-tree-right {
+	width: 79%;
+	float: left;
+}
+/* 树 End */

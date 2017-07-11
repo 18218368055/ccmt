@@ -8,7 +8,7 @@
 	</sql>
 	
 	<!-- 获取系统使用的数据字典 -->
-	<select id="queryHdDict" resultType="com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictDto">
+	<select id="queryHdDict" resultType="com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictDto">
 		select code, name from sms_dict t where t.type_code = #{typeCode} and t.status = 1
 	</select>	
 	

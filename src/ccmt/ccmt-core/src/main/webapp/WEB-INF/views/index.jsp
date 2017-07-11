@@ -53,8 +53,8 @@
 			                    	<ul class="nav child_menu">
 			                    		<li><a onclick="turnMenu('${ctx}/sms/user/toList')" href="javascript:;">用户管理</a></li>
 			                    		<li><a onclick="turnMenu('${ctx}/sms/sbd/dictType/toList')" href="javascript:;">数据字典</a></li>
-			                    		<li><a onclick="" href="javascript:;">角色管理</a></li>
-			                      		<li><a href="javascript:;">权限管理</a></li>
+			                    		<li><a onclick="turnMenu('${ctx}/sms/pms/role/toList')" href="javascript:;">角色管理</a></li>
+				                      	<li><a onclick="turnMenu('${ctx}/sms/pms/permission/toList')" href="javascript:;">权限管理</a></li>
 			                    	</ul>
 			                  	</li>
 		            		</ul>

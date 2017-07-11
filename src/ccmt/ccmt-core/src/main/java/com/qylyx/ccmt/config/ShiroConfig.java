@@ -2,6 +2,7 @@ package com.qylyx.ccmt.config;
 
 import java.util.LinkedHashMap;
 
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -48,6 +49,7 @@ public class ShiroConfig {
 	public SecurityManager securityManager(ShiroRealm shiroRealm) {
 		DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
 		manager.setRealm(shiroRealm);
+		manager.setCacheManager(shiroEhCacheManager());
 		return manager;
 	}
 	
@@ -56,8 +58,20 @@ public class ShiroConfig {
 	 * @return
 	 */
 	@Bean
-	public ShiroRealm shiroRealm() {
+	public ShiroRealm shiroRealm(EhCacheManager shiroEhCacheManager) {
 		ShiroRealm realm = new ShiroRealm();
+		realm.setCacheManager(shiroEhCacheManager);
 		return realm;
+	}
+	
+	/**
+	 * shiro缓存
+	 * @return
+	 */
+	@Bean("shiroEhCacheManager")
+	public EhCacheManager shiroEhCacheManager() {
+		EhCacheManager cacheManager = new EhCacheManager();
+		cacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");
+		return cacheManager;
 	}
 }

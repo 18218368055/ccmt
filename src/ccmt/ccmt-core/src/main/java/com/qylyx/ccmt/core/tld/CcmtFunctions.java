@@ -7,8 +7,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 
 import com.qylyx.ccmt.core.context.ApplicationContextUtils;
-import com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictDto;
-import com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictTypeDto;
+import com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictDto;
+import com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictTypeDto;
 import com.qylyx.ccmt.sms.service.sbd.dict.ISmsDictTypeService;
 import com.qylyx.july.utils.check.ValidateUtils;
 import com.qylyx.remex.base.entity.Result;
@@ -60,7 +60,7 @@ public class CcmtFunctions {
 		if (StringUtils.isNotBlank(typeCode)) {
 			ISmsDictTypeService smsDictTypeService = getContext().getBean(ISmsDictTypeService.class);
 			if (smsDictTypeService != null) {
-				Result<List<SmsDictTypeDto>> result = smsDictTypeService.queryHdDict();
+				Result<List<SmsDictTypeDto>> result = smsDictTypeService.querySysUseDict();
 				if (RemexResultConst.CODE_SUCCESS.equals(result.getCode())) {
 					List<SmsDictTypeDto> typeList = result.getData();
 					if (ValidateUtils.isNotEmpty(typeList)) {

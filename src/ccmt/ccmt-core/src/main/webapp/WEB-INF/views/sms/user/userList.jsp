@@ -89,6 +89,7 @@
 													{@else}
 														<button onclick="changeStatus('{{data.id}}', '1')" class="btn btn-danger btn-xs" title="启用">启</button>
 													{@/if}
+													<button onclick="" class="btn btn-primary btn-xs" title="角色分配">角</button>
 												</td>
 											</tr>
 										{@/each}

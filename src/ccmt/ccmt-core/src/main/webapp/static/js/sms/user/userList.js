@@ -87,20 +87,14 @@ function changeStatus(id, status) {
  * 打开详情界面
  */
 function openView(index) {
-	$("#ccmtShade").show();
-	$("#viewPanel").show();
-	
 	var data = dataCache[index];
 	$("#viewPanel").valsByName({
 		setType : "text",
 		data : data,
 	});
-//	$("#vpUsername").text(data.username);
-//	$("#vpName").text(data.name);
-//	$("#vpStatus").text(ccmtDd.tran(data.status, 'SMS_USER_STATUS'));
-//	$("#vpBirthday").text(data.birthday);
-//	$("#vpSex").text(ccmtDd.tran(data.sex, 'SEX'));
-//	$("#vpCreateTime").text(data.createTime);
+	
+	$("#ccmtShade").show();
+	$("#viewPanel").show();
 }
 
 /**

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictDto;
+import com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictDto;
 import com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictVO;
 
 /**

@@ -2,8 +2,8 @@ package com.qylyx.ccmt.sms.dao.sbd.dict;
 
 import java.util.List;
 
-import com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictTypeDto;
 import com.qylyx.ccmt.sms.entity.sbd.dict.co.SmsDictTypeListCo;
+import com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictTypeDto;
 import com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictTypeVO;
 
 /**

@@ -8,7 +8,7 @@
 	</sql>
 	
 	<!-- 系统使用的数据字典结果集 -->
-	<resultMap id="hdDictResult" type="com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictTypeDto">
+	<resultMap id="hdDictResult" type="com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictTypeDto">
 		<result property="typeCode" column="type_code"/>
 		<result property="typeName" column="type_name"/>
 		<collection property="dictList" column="type_code" 

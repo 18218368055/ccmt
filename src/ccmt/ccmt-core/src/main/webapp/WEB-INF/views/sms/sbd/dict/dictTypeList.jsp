@@ -283,7 +283,6 @@
 		</div>
 	</div>
 	
-	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery.validate.js"></script>
 	<script type="text/javascript" src="${ctx}/static/js/sms/sbd/dict/dictTypeList.js"></script>
 </body>
 </html>

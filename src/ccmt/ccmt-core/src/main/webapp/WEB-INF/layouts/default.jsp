@@ -23,6 +23,8 @@
     <link href="${ctx}/static/css/my-custom.css" rel="stylesheet">
 	<!-- jquery -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery-1.9.1.js"></script>
+	<!-- jquery验证框架 -->
+	<script type="text/javascript" src="${ctx}/static/js/plugins/jquery.validate.js"></script>
 	<!-- juicer -->
 	<script type="text/javascript" src="${ctx}/static/js/plugins/juicer-july.js"></script>
 	<!-- 分页插件 -->

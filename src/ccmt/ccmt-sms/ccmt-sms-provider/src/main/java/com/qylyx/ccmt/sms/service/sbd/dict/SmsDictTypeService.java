@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qylyx.ccmt.sms.dao.sbd.dict.ISmsDictTypeDao;
-import com.qylyx.ccmt.sms.entity.sbd.dict.bo.SmsDictTypeDto;
 import com.qylyx.ccmt.sms.entity.sbd.dict.co.SmsDictTypeListCo;
+import com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictTypeDto;
 import com.qylyx.ccmt.sms.entity.sbd.dict.vo.SmsDictTypeVO;
 import com.qylyx.july.salog.annotation.Salog;
 import com.qylyx.remex.base.entity.Result;
@@ -38,7 +38,7 @@ public class SmsDictTypeService extends BaseService implements ISmsDictTypeServi
 	 */
 	@Salog("获取系统使用的数据字典")
 	@Override
-	public Result<List<SmsDictTypeDto>> queryHdDict() {
+	public Result<List<SmsDictTypeDto>> querySysUseDict() {
 //		List<SmsDictTypeDto> list = smsDictTypeDao.queryHdDict();
 		List<SmsDictTypeDto> list = new ArrayList<SmsDictTypeDto>();
 		return new Result<List<SmsDictTypeDto>>(list);
