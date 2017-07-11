@@ -1,7 +1,9 @@
 package com.qylyx.ccmt.sms.service.pms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -73,6 +75,32 @@ public class SmsRoleService implements ISmsRoleService{
 		vo.setId(1001L);
 		
 		return new Result<SmsRoleVO>(vo);
+	}
+
+	/**
+	 * 角色分配
+	 * @param userId 用户id
+	 * @param roleIds 角色id集合，以,号隔开
+	 * @return
+	 */
+	@Salog("角色分配")
+	@Override
+	public Result<String> distribute(Long userId, String roleIds) {
+		if (userId == null)
+			throw new RemexServiceException("", "用户id不能为空！");
+		if (StringUtils.isBlank(roleIds))
+			throw new RemexServiceException("", "角色id集合不能为空！");
+		
+		Set<Long> roleIdSet = new HashSet<Long>();
+		String[] idArr = roleIds.split(",");
+		for (String id : idArr) {
+			if (StringUtils.isBlank(id))
+				throw new RemexServiceException("", "角色id中存在空字符串的情况！");
+			roleIdSet.add(Long.valueOf(id.trim()));
+		}
+		
+		
+		return new Result<String>("");
 	}
 
 }

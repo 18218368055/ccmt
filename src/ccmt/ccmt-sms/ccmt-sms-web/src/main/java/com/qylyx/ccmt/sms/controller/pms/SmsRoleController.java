@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -61,5 +62,42 @@ public class SmsRoleController {
 		return "";
 	}
 	
+	/**
+	 * 到角色分配界面
+	 * @param userId 用户ID
+	 * @return
+	 */
+	@Salog("到角色分配界面")
+	@RequestMapping("toDistribute")
+	public String toDistribute(Model model, Long userId) {
+		model.addAttribute("userId", userId);
+		return "sms/pms/roleDistribute";
+	}
+	
+	/**
+	 * 查询用户角色列表
+	 * @return
+	 */
+	@Salog("查询用户角色列表")
+	@RequestMapping("queryUserRoleList")
+	@ResponseBody
+	public List<SmsRoleDto> queryUserRoleList(Long userId) {
+		List<SmsRoleDto> list = smsRoleService.queryDtoList().getDataWeb();
+		return list;
+	}
+	
+	/**
+	 * 角色分配
+	 * @param userId 用户id
+	 * @param roleIds 角色id集合，以,号隔开
+	 * @return
+	 */
+	@Salog("角色分配")
+	@RequestMapping("distribute")
+	@ResponseBody
+	public Object distribute(Long userId, String roleIds) {
+		smsRoleService.distribute(userId, roleIds).getDataWeb();
+		return "";
+	}
 	
 }

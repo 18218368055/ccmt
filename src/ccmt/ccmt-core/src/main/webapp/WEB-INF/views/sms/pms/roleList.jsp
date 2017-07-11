@@ -13,20 +13,20 @@
     <script type="text/javascript" src="${ctx}/static/plugins/jquery-easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-    <div class="ccmt-tree-left">
-        <ul id="treeData"></ul>
-    </div>
-    
-    <div class="ccmt-tree-right">
-    	<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="x_panel">
-					<div class="x_title">
-                    	<h2>子角色列表<small></small></h2>
-                   		<div class="clearfix"></div>
-                  	</div>
-                  	
-                  	<div class="x_content">
+   	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+                   	<h2>角色列表<small></small></h2>
+                  	<div class="clearfix"></div>
+               	</div>
+               	
+               	<div class="x_content">
+               		<div class="ccmt-tree-left">
+				        <ul id="treeData"></ul>
+				    </div>
+               		
+               		<div class="ccmt-tree-right">
 						<div class="row csb-row">
 							<div id="curNodeInfo">
 								<div class="col-md-3 col-sm-12 col-xs-12 form-group">
@@ -74,7 +74,7 @@
 													{@else}
 														<button onclick="changeStatus('{{data.id}}', '1')" class="btn btn-danger btn-xs" title="启用">启</button>
 													{@/if}
-													<button onclick="" class="btn btn-primary btn-xs" title="权限分配">权</button>
+													<button onclick="distributePermission('{{data.id}}')" class="btn btn-primary btn-xs" title="权限分配">权</button>
 												</td>
 											</tr>
 										{@/each}

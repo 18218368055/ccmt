@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import com.qylyx.ccmt.sms.entity.pms.dto.SmsPermissionDto;
@@ -83,6 +84,31 @@ public class SmsPermissionService implements ISmsPermissionService {
 	public Result<SmsPermissionVO> add(SmsPermissionVO vo) {
 		
 		return new Result<SmsPermissionVO>(vo);
+	}
+
+	/**
+	 * 权限分配
+	 * @param roleId 角色id
+	 * @param permissionIds 权限id集合，以,号隔开
+	 * @return
+	 */
+	@Override
+	public Result<String> distribute(Long roleId, String permissionIds) {
+		if (roleId == null)
+			throw new RemexServiceException("", "角色id不能为空！");
+		if (StringUtils.isBlank(permissionIds))
+			throw new RemexServiceException("", "权限id集合不能为空！");
+		
+		Set<Long> permissionIdsIdSet = new HashSet<Long>();
+		String[] idArr = permissionIds.split(",");
+		for (String id : idArr) {
+			if (StringUtils.isBlank(id))
+				throw new RemexServiceException("", "权限id中存在空字符串的情况！");
+			permissionIdsIdSet.add(Long.valueOf(id.trim()));
+		}
+		
+		
+		return new Result<String>("");
 	}
 
 }

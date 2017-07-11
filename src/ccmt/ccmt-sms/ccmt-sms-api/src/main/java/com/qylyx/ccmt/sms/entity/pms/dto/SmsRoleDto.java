@@ -14,6 +14,11 @@ public class SmsRoleDto extends SmsRoleVO {
 	private static final long serialVersionUID = 1L;
 	
 	/**
+	 * 是否已被分配了
+	 */
+	private Boolean checked = true;
+	
+	/**
 	 * 子角色列表
 	 */
 	private List<SmsRoleDto> children;
@@ -26,4 +31,11 @@ public class SmsRoleDto extends SmsRoleVO {
 		return children;
 	}
 	
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
+	
+	public Boolean getChecked() {
+		return checked;
+	}
 }

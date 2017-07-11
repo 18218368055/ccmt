@@ -14,6 +14,11 @@ public class SmsPermissionDto extends SmsPermissionVO {
 	private static final long serialVersionUID = 1L;
 	
 	/**
+	 * 是否已被分配了
+	 */
+	private Boolean checked = true;
+	
+	/**
 	 * 子权限列表
 	 */
 	private List<SmsPermissionDto> children;
@@ -25,5 +30,13 @@ public class SmsPermissionDto extends SmsPermissionVO {
 	
 	public List<SmsPermissionDto> getChildren() {
 		return children;
+	}
+	
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
+	
+	public Boolean getChecked() {
+		return checked;
 	}
 }

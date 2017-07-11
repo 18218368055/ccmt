@@ -13,20 +13,20 @@
     <script type="text/javascript" src="${ctx}/static/plugins/jquery-easyui/jquery.easyui.min.js"></script>
 </head>
 <body>
-    <div class="ccmt-tree-left">
-        <ul id="treeData"></ul>
-    </div>
-    
-    <div class="ccmt-tree-right">
-    	<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<div class="x_panel">
-					<div class="x_title">
-                    	<h2>子权限列表<small></small></h2>
-                   		<div class="clearfix"></div>
-                  	</div>
+   	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+                    <h2>权限列表<small></small></h2>
+                   	<div class="clearfix"></div>
+               	</div>
                   	
-                  	<div class="x_content">
+                <div class="x_content">
+                	<div class="ccmt-tree-left">
+				        <ul id="treeData"></ul>
+				    </div>
+                	
+                	<div class="ccmt-tree-right">
 						<div class="row csb-row">
 							<div id="curNodeInfo">
 								<div class="col-md-3 col-sm-12 col-xs-12 form-group">

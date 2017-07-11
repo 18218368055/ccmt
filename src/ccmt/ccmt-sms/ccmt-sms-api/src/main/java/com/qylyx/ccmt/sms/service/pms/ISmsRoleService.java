@@ -26,4 +26,12 @@ public interface ISmsRoleService {
 	 * @return
 	 */
 	public Result<SmsRoleVO> add(SmsRoleVO vo);
+	
+	/**
+	 * 角色分配
+	 * @param userId 用户id
+	 * @param roleIds 角色id集合，以,号隔开
+	 * @return
+	 */
+	public Result<String> distribute(Long userId, String roleIds);
 }

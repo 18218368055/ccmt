@@ -34,4 +34,12 @@ public interface ISmsPermissionService {
 	 * @return
 	 */
 	public Result<SmsPermissionVO> add(SmsPermissionVO vo);
+	
+	/**
+	 * 权限分配
+	 * @param roleId 角色id
+	 * @param permissionIds 权限id集合，以,号隔开
+	 * @return
+	 */
+	public Result<String> distribute(Long roleId, String permissionIds);
 }

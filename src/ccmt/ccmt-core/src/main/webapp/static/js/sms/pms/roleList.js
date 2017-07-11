@@ -114,6 +114,14 @@ function add() {
 	});
 }
 
+/**
+ * 权限分配
+ * @param id
+ */
+function distributePermission(id) {
+	location.href = getCtx() + "/sms/pms/permission/toDistribute?roleId=" + id;
+}
+
 
 
 

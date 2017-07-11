@@ -105,7 +105,13 @@ function closeView() {
 	$("#viewPanel").hide();
 }
 
-
+/**
+ * 角色分配
+ * @param id
+ */
+function distributeRole(id) {
+	location.href = getCtx() + "/sms/pms/role/toDistribute?userId=" + id;
+}
 
 
 
