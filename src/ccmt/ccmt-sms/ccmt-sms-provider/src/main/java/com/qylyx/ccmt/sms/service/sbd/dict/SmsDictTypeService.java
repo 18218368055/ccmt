@@ -1,6 +1,5 @@
 package com.qylyx.ccmt.sms.service.sbd.dict;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,8 +38,8 @@ public class SmsDictTypeService extends BaseService implements ISmsDictTypeServi
 	@Salog("获取系统使用的数据字典")
 	@Override
 	public Result<List<SmsDictTypeDto>> querySysUseDict() {
-//		List<SmsDictTypeDto> list = smsDictTypeDao.queryHdDict();
-		List<SmsDictTypeDto> list = new ArrayList<SmsDictTypeDto>();
+		List<SmsDictTypeDto> list = smsDictTypeDao.queryHdDict();
+//		List<SmsDictTypeDto> list = new ArrayList<SmsDictTypeDto>();
 		return new Result<List<SmsDictTypeDto>>(list);
 	}
 

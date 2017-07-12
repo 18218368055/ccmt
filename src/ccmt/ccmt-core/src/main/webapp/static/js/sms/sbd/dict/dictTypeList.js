@@ -31,12 +31,33 @@ function search() {
 		before : function() {
 			$("#tableDataList").empty();
 		},
-	    callback: function(data, pagination){
-	    	dataCache = data || [];
-	    	var html = juicer(tempDataList, {dataList : data});
-			$("#tableDataList").html(html);
+	    callback: function(result, pagination){
+	    	var dataList;
+	    	if (result.code == "100") {
+	    		dataList = result.data.data || [];
+	    		//数据统一转换
+	    		dataTran(dataList);
+	    		//模板渲染
+	    		var html = juicer(tempDataList, {dataList : dataList});
+	    		$("#tableDataList").html(html);
+	    		
+	    	} else {
+	    		fmsg("查询失败！");
+	    	}
+	    	dataCache = dataList;
 	    }
 	});
+}
+
+/**
+ * 数据统一转换
+ */
+function dataTran(dataList) {
+	if (dataList) {
+		$.each(dataList, function(i, data) {
+			data.statusStr = ccmtDd.tran(data.status, 'SMS_DICT_TYPE_STATUS');
+		});
+	}
 }
 
 /**

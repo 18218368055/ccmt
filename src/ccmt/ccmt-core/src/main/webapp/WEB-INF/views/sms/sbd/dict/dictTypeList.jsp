@@ -69,7 +69,7 @@
 	                        					<td>{{data.typeCode}}</td>
 	                        					<td>{{data.typeName}}</td>
 	                        					<td>{{data.remark}}</td>
-	                        					<td>{@out ccmtDd.tran(data.status, 'SMS_DICT_TYPE_STATUS')}</td>
+	                        					<td>{{data.statusStr}}</td>
 	                        					<td>
 	                        						<button onclick="openDict('{{index}}')" class="btn btn-info btn-xs" title="数据字典">典</button>
 	                        					</td>
