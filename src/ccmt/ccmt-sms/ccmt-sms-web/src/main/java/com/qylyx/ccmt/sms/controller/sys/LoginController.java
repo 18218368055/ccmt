@@ -17,7 +17,7 @@ import com.qylyx.july.salog.annotation.Salog;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("登录及相关处理")
+@Salog("登录及相关处理controller")
 @Controller
 @RequestMapping("/")
 public class LoginController {
@@ -37,6 +37,7 @@ public class LoginController {
 	 * @param password
 	 * @return
 	 */
+	@Salog("登录")
 	@RequestMapping("login")
 	public String login(HttpSession session, String username, String password) {
 		try {

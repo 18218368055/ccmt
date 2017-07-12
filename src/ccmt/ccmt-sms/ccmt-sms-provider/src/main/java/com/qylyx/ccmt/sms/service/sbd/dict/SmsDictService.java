@@ -19,7 +19,7 @@ import com.qylyx.remex.base.service.exception.RemexServiceException;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("数据字典")
+@Salog("数据字典service")
 @Service
 public class SmsDictService implements ISmsDictService {
 	

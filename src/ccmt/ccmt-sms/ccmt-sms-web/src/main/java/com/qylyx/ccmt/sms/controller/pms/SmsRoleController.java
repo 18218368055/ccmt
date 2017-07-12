@@ -19,7 +19,7 @@ import com.qylyx.july.salog.annotation.Salog;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("角色管理")
+@Salog("角色管理controller")
 @RequestMapping("/sms/pms/role/")
 @Controller
 public class SmsRoleController {
@@ -58,8 +58,20 @@ public class SmsRoleController {
 	@RequestMapping("add")
 	@ResponseBody
 	public Object add(SmsRoleVO vo) {
-		smsRoleService.add(vo);
+		smsRoleService.add(vo).getDataWeb();
 		return "";
+	}
+	
+	/**
+	 * 启用/禁用状态
+	 * @return
+	 */
+	@Salog("启用/禁用状态")
+	@RequestMapping("changeStatus")
+	@ResponseBody
+	public Object changeStatus(Long id, String status) {
+		smsRoleService.changeStatus(id, status).getDataWeb();
+		return null;
 	}
 	
 	/**
@@ -82,7 +94,7 @@ public class SmsRoleController {
 	@RequestMapping("queryUserRoleList")
 	@ResponseBody
 	public List<SmsRoleDto> queryUserRoleList(Long userId) {
-		List<SmsRoleDto> list = smsRoleService.queryDtoList().getDataWeb();
+		List<SmsRoleDto> list = smsRoleService.queryUserRoleList(userId).getDataWeb();
 		return list;
 	}
 	
@@ -97,7 +109,7 @@ public class SmsRoleController {
 	@ResponseBody
 	public Object distribute(Long userId, String roleIds) {
 		smsRoleService.distribute(userId, roleIds).getDataWeb();
-		return "";
+		return null;
 	}
 	
 }

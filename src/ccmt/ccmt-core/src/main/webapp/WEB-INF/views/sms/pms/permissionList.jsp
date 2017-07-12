@@ -135,6 +135,24 @@
 						</div>
 						<div class="item form-group efc-row">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12">
+								权限代码<span class="red">*</span>：
+							</label>
+	                        <div class="col-md-5 col-sm-6 col-xs-12">
+	                        	<input name="code" class="required form-control col-md-7 col-xs-12" type="text">
+	                        </div>
+							<div class="alert"></div>
+						</div>
+						<div class="item form-group efc-row">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">
+								URL&nbsp;：
+							</label>
+	                        <div class="col-md-5 col-sm-6 col-xs-12">
+	                        	<input name="url" class="form-control col-md-7 col-xs-12" type="text">
+	                        </div>
+							<div class="alert"></div>
+						</div>
+						<div class="item form-group efc-row">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">
 								状态&nbsp;：
 							</label>
 	                        <div class="col-md-5 col-sm-6 col-xs-12">

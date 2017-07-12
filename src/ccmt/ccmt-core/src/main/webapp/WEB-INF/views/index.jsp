@@ -28,7 +28,7 @@
 				<div class="left_col scroll-view">
 					
 					<div class="navbar nav_title" style="border: 0;">
-		              <a href="${ctx}/main/index" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+		              <a href="${ctx}/index" class="site_title"><i class="fa fa-paw"></i> <span>CCMT 首   页</span></a>
 		            </div>
 		            <div class="clearfix"></div>
 		            
@@ -51,10 +51,18 @@
 		            			<li>
 		            				<a><i class="fa fa-home"></i> 系统管理 <span class="fa fa-chevron-down"></span></a>
 			                    	<ul class="nav child_menu">
-			                    		<li><a onclick="turnMenu('${ctx}/sms/user/toList')" href="javascript:;">用户管理</a></li>
-			                    		<li><a onclick="turnMenu('${ctx}/sms/sbd/dictType/toList')" href="javascript:;">数据字典</a></li>
-			                    		<li><a onclick="turnMenu('${ctx}/sms/pms/role/toList')" href="javascript:;">角色管理</a></li>
-				                      	<li><a onclick="turnMenu('${ctx}/sms/pms/permission/toList')" href="javascript:;">权限管理</a></li>
+			                    		<shiro:hasPermission name="/sms/user/toList">
+				                    		<li><a onclick="turnMenu('${ctx}/sms/user/toList')" href="javascript:;">用户管理</a></li>
+			                    		</shiro:hasPermission>
+			                    		<shiro:hasPermission name="/sms/sbd/dictType/toList">
+				                    		<li><a onclick="turnMenu('${ctx}/sms/sbd/dictType/toList')" href="javascript:;">数据字典</a></li>
+			                    		</shiro:hasPermission>
+			                    		<shiro:hasPermission name="/sms/pms/role//toList">
+				                    		<li><a onclick="turnMenu('${ctx}/sms/pms/role/toList')" href="javascript:;">角色管理</a></li>
+			                    		</shiro:hasPermission>
+			                    		<shiro:hasPermission name="/sms/pms/permission/toList">
+					                      	<li><a onclick="turnMenu('${ctx}/sms/pms/permission/toList')" href="javascript:;">权限管理</a></li>
+			                    		</shiro:hasPermission>
 			                    	</ul>
 			                  	</li>
 		            		</ul>

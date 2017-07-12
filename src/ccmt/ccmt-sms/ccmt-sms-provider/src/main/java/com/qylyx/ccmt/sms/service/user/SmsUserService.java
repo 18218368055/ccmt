@@ -1,14 +1,13 @@
 package com.qylyx.ccmt.sms.service.user;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import com.qylyx.ccmt.sms.dao.user.ISmsUserDao;
 import com.qylyx.ccmt.sms.entity.user.co.SmsUserListCo;
 import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.july.salog.annotation.Salog;
@@ -24,32 +23,12 @@ import com.qylyx.remex.framework.base.service.BaseService;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("用户管理")
+@Salog("用户管理service")
 @Service
 public class SmsUserService extends BaseService implements ISmsUserService {
 	
-//	@Autowired
-//	private SmsUserDao smsUserDao;
-	
-	private List<SmsUserVO> itemUserList = new ArrayList<SmsUserVO>();
-	
-	public SmsUserService() {
-		Random random = new Random();
-		for (int i = 0; i < 126; i++) {
-			SmsUserVO user = new SmsUserVO();
-			user.setId(1000L + i);
-			user.setUsername("lu" + i);
-			user.setName("路人甲" + i);
-			user.setPassword("888888");
-			user.setSex(random.nextInt(2) + "");
-			user.setBirthday(new Date());
-			user.setStatus(random.nextInt(2) + "");
-			user.setCreateTime(new Date());
-			itemUserList.add(user);
-		}
-		itemUserList.get(0).setUsername("admin");
-		itemUserList.get(0).setName("管理员");
-	}
+	@Autowired
+	private ISmsUserDao smsUserDao;
 	
 	/**
 	 * 登录
@@ -61,19 +40,9 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	public Result<SmsUserVO> login(String username) {
 		if (StringUtils.isBlank(username))
 			throw new RemexServiceException("301", "用户名不能为空！");
-//		SmsUserVO user = smsUserDao.login(username);
-		
-		SmsUserVO smsUserVO = null;
-		for (SmsUserVO user : itemUserList) {
-			if (username.equals(user.getUsername())) {
-				smsUserVO = user;
-				break;
-			}
-		}
-		return new Result<SmsUserVO>(smsUserVO);
+		SmsUserVO user = smsUserDao.login(username);
+		return new Result<SmsUserVO>(user);
 	}
-	
-	
 
 	/**
 	 * 查询列表
@@ -85,41 +54,13 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 	@Cacheable("")
 	@Override
 	public Result<Page<SmsUserVO>> queryUserList(PageCo pageCo, SmsUserListCo co) {
-		//验证分页条件
-		validatePageCo(pageCo);
-		int index = (int) ((pageCo.getPageNum() - 1) * pageCo.getPageSize());
-		List<SmsUserVO> list = new ArrayList<SmsUserVO>();
-		for (int i = index; i < index + pageCo.getPageSize(); i++) {
-			if (i > itemUserList.size() - 1)
-				break;
-			SmsUserVO user = itemUserList.get(i);
-			list.add(user);
-		}
-		Page<SmsUserVO> page = createPage(pageCo);
-		page.setData(list).setTotal(itemUserList.size() + 0L).setTotalPage(13L);
-		return new Result<Page<SmsUserVO>>(page);
+		startPage(pageCo);
+		List<SmsUserVO> list = smsUserDao.queryList(co);
+		return packPage(list);
 	}
 
 	/**
-	 * 新增用户
-	 * @param vo 用户对象
-	 * @return
-	 */
-	@Salog("新增用户")
-	@Override
-	public Result<SmsUserVO> add(SmsUserVO vo) {
-		vo.setId(itemUserList.size() + 1001L);
-		itemUserList.add(vo);
-		return new Result<SmsUserVO>(vo);
-	}
-
-	@Override
-	public Result<SmsUserVO> update(SmsUserVO vo) {
-		return null;
-	}
-
-	/**
-	 * 启用/禁用用户状态
+	 * 启用/禁用状态
 	 * @param id
 	 * @param status
 	 * @return
@@ -132,12 +73,9 @@ public class SmsUserService extends BaseService implements ISmsUserService {
 		if (StringUtils.isBlank(status))
 			throw new RemexServiceException("302", "status不能为空！");
 		
-		for (SmsUserVO smsUserVO : itemUserList) {
-			if (id.equals(smsUserVO.getId())) {
-				smsUserVO.setStatus(status);
-				break;
-			}
-		}
+		int count = smsUserDao.changeStatus(id, status);
+		if (count == 0)
+			throw new RemexServiceException("301", "受影响行数为空！");
 		
 		return new Result<Void>(null);
 	} 

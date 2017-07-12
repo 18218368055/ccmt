@@ -25,7 +25,7 @@ import com.qylyx.remex.framework.base.service.BaseService;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("数据字典类型")
+@Salog("数据字典类型service")
 @Service
 public class SmsDictTypeService extends BaseService implements ISmsDictTypeService {
 	
@@ -79,7 +79,7 @@ public class SmsDictTypeService extends BaseService implements ISmsDictTypeServi
 		vo.setModifier("admin");
 		int count = smsDictTypeDao.save(vo);
 		if (count == 0)
-			throw new RemexServiceException("401", "数据保存异常，受影响行数为0！");
+			throw new RemexServiceException("401", "受影响行数为0！");
 		return new Result<SmsDictTypeVO>(vo);
 	}
 }

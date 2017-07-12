@@ -23,6 +23,9 @@ import java.util.Date;
 public class SmsPermissionVO implements java.io.Serializable {
     /** 版本号 */
     private static final long serialVersionUID = 4967448900725948394L;
+    
+    /**权限根id*/
+	public final static Long PERMISSION_ROOT_ID = -1L;
 
     /** 自增ID */
     private Long id;

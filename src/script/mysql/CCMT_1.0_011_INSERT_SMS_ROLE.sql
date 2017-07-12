@@ -1,0 +1,2 @@
+INSERT INTO `sms_role` (`id`, `name`, `parent_id`, `remark`, `status`, `creator`, `create_time`, `modifier`, `modify_time`) VALUES
+	(1, '超级管理员', -1, '超级管理员', '0', 'admin', '2017-07-11 21:58:04', 'admin', '2017-07-11 21:58:04');

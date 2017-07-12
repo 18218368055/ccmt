@@ -16,7 +16,7 @@ public class SmsRoleDto extends SmsRoleVO {
 	/**
 	 * 是否已被分配了
 	 */
-	private Boolean checked = true;
+	private Boolean checked = false;
 	
 	/**
 	 * 子角色列表

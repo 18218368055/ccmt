@@ -101,6 +101,7 @@ function add() {
             		if (result.code == "100") {
             			rmsg("新增成功！");
             			closeAdd();
+            			loadTree();
             		} else {
             			fmsg("新增失败！");
             		}
@@ -111,6 +112,31 @@ function add() {
             });
             return false;
         }
+	});
+}
+
+/**
+ * 改变状态
+ */
+function changeStatus(id, status) {
+	var itMsg = status == 0 ? "禁用" : "启用";
+	cfMsg("是否" + itMsg + "此角色？", function() {
+		july.ajax({
+			url : getCtx() + "/sms/pms/role/changeStatus",
+			data : {
+				id : id,
+				status : status
+			},
+			prFlag : "changeStatus",
+			success : function(result) {
+				if (result.code == "100") {
+					rmsg(itMsg + "成功！");
+					loadTree();
+				} else {
+					fmsg(itMsg + "失败！");
+				}
+			}
+		});
 	});
 }
 

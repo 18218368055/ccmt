@@ -1,2 +1,0 @@
-insert into `sm_dict_type` (`type_code`, `type_name`, `status`, `remark`, `creator`, `create_time`, `modifier`, `modify_time`) values
-	('sex', '性别', 0, '性别', 'admin', current_timestamp, 'admin', current_timestamp);

@@ -18,7 +18,7 @@ import com.qylyx.remex.framework.base.entity.page.PageCo;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("用户管理")
+@Salog("用户管理controller")
 @Controller
 @RequestMapping("/sms/user/")
 public class SmsUserController {
@@ -51,36 +51,10 @@ public class SmsUserController {
 	}
 	
 	/**
-	 * 新增
-	 * @param vo
+	 * 启用/禁用状态
 	 * @return
 	 */
-	@Salog("新增")
-	@RequestMapping("add")
-	@ResponseBody
-	public Object add(SmsUserVO vo) {
-		vo = smsUserService.add(vo).getData();
-		return vo;
-	}
-	
-	/**
-	 * 修改
-	 * @param vo
-	 * @return
-	 */
-	@Salog("用户")
-	@RequestMapping("update")
-	@ResponseBody
-	public Object update(SmsUserVO vo) {
-		vo.setName(vo.getName() + "uu");
-		return vo;
-	}
-	
-	/**
-	 * 启用/禁用用户状态
-	 * @return
-	 */
-	@Salog("启用/禁用用户状态")
+	@Salog("启用/禁用状态")
 	@RequestMapping("changeUserStatus")
 	@ResponseBody
 	public Object changeUserStatus(Long id, String status) {

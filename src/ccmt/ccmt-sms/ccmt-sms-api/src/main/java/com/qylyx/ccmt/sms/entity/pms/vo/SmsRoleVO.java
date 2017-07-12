@@ -23,6 +23,10 @@ import java.util.Date;
 public class SmsRoleVO implements java.io.Serializable {
     /** 版本号 */
     private static final long serialVersionUID = -8876805807937811126L;
+    
+    /**角色根id*/
+	public final static Long ROLE_ROOT_ID = -1L;
+	
 
     /** 自增ID */
     private Long id;

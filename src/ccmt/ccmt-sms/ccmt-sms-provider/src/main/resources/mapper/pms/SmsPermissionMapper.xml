@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 权限管理 -->
+<mapper namespace="com.qylyx.ccmt.sms.dao.pms.ISmsPermissionDao">
+	<resultMap id="SmsPermissionDto" type="com.qylyx.ccmt.sms.entity.pms.dto.SmsPermissionDto"/>
+	<parameterMap id="SmsPermissionVO" type="com.qylyx.ccmt.sms.entity.pms.vo.SmsPermissionVO"/>
+	
+	<sql id="allCols">
+        t.id, t.name, t.code, t.parent_id, t.url, 
+        t.remark, t.status, t.creator, t.create_time, t.modifier, 
+        t.modify_time
+    </sql>
+    
+    <!-- 查询系统所用的某用户的权限代码列表 -->
+    <select id="querySysUsePermissionList" resultType="java.lang.String">
+    	select p.code from sms_permission p
+			inner join sms_role_permission rp on rp.permission_id = p.id
+			inner join sms_user_role ur on ur.role_id = rp.role_id
+			where ur.user_id = #{user_id}
+    </select>
+    
+    <!-- 插入数据 -->
+    <insert id="save" parameterMap="SmsPermissionVO" useGeneratedKeys="true" keyProperty="id">
+    	insert into sms_permission (
+    		name, code, parent_id, url, 
+        	remark, status, creator, create_time, modifier, 
+       	 	modify_time
+    	) values (
+            #{name},
+            #{code},
+            #{parentId},
+            #{url},
+            #{remark},
+            #{status},
+            #{creator},
+            #{createTime},
+            #{modifier},
+            #{modifyTime}
+        )
+    </insert>
+    
+    <!-- 启用/禁用状态 -->
+    <update id="changeStatus">
+    	update sms_permission t set t.status = #{status} where t.id = #{id}
+    </update>
+    
+    <!-- 查询所有的权限列表 -->
+    <select id="queryDtoList" resultMap="SmsPermissionDto">
+    	select <include refid="allCols"/> from sms_permission t
+    </select>
+    
+    <!-- 查询某用户的角色列表 -->
+    <select id="queryRolePermissionList" resultMap="SmsPermissionDto">
+    	select <include refid="allCols"/>
+    		, (select count(1) from sms_role_permission rp where rp.permission_id = t.id and rp.role_id = #{roleId}) as checked 
+    		from sms_permission t
+    		where t.status = '1'
+    </select>
+    
+    <!-- 删除某角色的所分配的所有权限 -->
+    <delete id="deleteRolePermissionIds">
+    	delete from sms_role_permission where role_id = #{roleId}
+    </delete>
+    
+    <!-- 批量分配角色权限 -->
+    <insert id="distributePermission">
+    	insert into sms_role_permission (role_id, permission_id) 
+    	values 
+    	<foreach collection="permissionIds" item="permissionId" index="index" separator=",">
+    		(#{roleId}, #{permissionId})
+    	</foreach>
+    </insert>
+</mapper>

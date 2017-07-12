@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qylyx.ccmt.sms.entity.sbd.dict.dto.SmsDictTypeDto;
-import com.qylyx.ccmt.sms.entity.user.vo.SmsUserVO;
 import com.qylyx.ccmt.sms.service.sbd.dict.ISmsDictTypeService;
 import com.qylyx.july.salog.annotation.Salog;
 
@@ -20,6 +18,7 @@ import com.qylyx.july.salog.annotation.Salog;
  * @author Qiaoxin.Hong
  *
  */
+@Salog("主controller")
 @Controller
 @RequestMapping("/")
 public class MainController {
@@ -37,15 +36,5 @@ public class MainController {
 		List<SmsDictTypeDto> ccmtDictSource = smsDictTypeService.querySysUseDict().getData();
 		model.addAttribute("ccmtDictSource", JSONObject.toJSON(ccmtDictSource));
 		return "index";
-	}
-	
-	@Salog("测试功能")
-	@RequestMapping("test")
-	@ResponseBody
-	public Object test() {
-		SmsUserVO user = new SmsUserVO();
-		user.setName("测试人员");
-		user.setUsername("test");
-		return user;
 	}
 }

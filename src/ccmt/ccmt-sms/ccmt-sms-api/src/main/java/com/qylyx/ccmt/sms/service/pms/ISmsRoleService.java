@@ -28,10 +28,26 @@ public interface ISmsRoleService {
 	public Result<SmsRoleVO> add(SmsRoleVO vo);
 	
 	/**
+	 * 启用/禁用状态
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	public Result<Void> changeStatus(Long id, String status);
+	
+	/**
+	 * 查询某用户的角色列表
+	 * @param userId 用户id
+	 * @return
+	 */
+	public Result<List<SmsRoleDto>> queryUserRoleList(Long userId);
+	
+	/**
 	 * 角色分配
 	 * @param userId 用户id
 	 * @param roleIds 角色id集合，以,号隔开
 	 * @return
 	 */
-	public Result<String> distribute(Long userId, String roleIds);
+	public Result<Void> distribute(Long userId, String roleIds);
+	
 }

@@ -19,7 +19,7 @@ import com.qylyx.july.salog.annotation.Salog;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("权限管理")
+@Salog("权限管理controller")
 @RequestMapping("/sms/pms/permission/")
 @Controller
 public class SmsPermissionController {
@@ -58,7 +58,20 @@ public class SmsPermissionController {
 	@RequestMapping("add")
 	@ResponseBody
 	public Object add(SmsPermissionVO vo) {
-		return "";
+		smsPermissionService.add(vo).getDataWeb();
+		return null;
+	}
+	
+	/**
+	 * 启用/禁用状态
+	 * @return
+	 */
+	@Salog("启用/禁用状态")
+	@RequestMapping("changeStatus")
+	@ResponseBody
+	public Object changeStatus(Long id, String status) {
+		smsPermissionService.changeStatus(id, status).getDataWeb();
+		return null;
 	}
 	
 	/**
@@ -81,7 +94,7 @@ public class SmsPermissionController {
 	@RequestMapping("queryRolePermissionList")
 	@ResponseBody
 	public List<SmsPermissionDto> queryRolePermissionList(Long roleId) {
-		List<SmsPermissionDto> list = smsPermissionService.queryDtoList().getDataWeb();
+		List<SmsPermissionDto> list = smsPermissionService.queryRolePermissionList(roleId).getDataWeb();
 		return list;
 	}
 	

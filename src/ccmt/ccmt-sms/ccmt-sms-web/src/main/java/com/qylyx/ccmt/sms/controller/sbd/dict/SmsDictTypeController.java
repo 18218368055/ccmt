@@ -18,7 +18,7 @@ import com.qylyx.remex.framework.base.entity.page.PageCo;
  * @author Qiaoxin.Hong
  *
  */
-@Salog("数据字典类型")
+@Salog("数据字典类型controller")
 @Controller
 @RequestMapping("/sms/sbd/dictType/")
 public class SmsDictTypeController {

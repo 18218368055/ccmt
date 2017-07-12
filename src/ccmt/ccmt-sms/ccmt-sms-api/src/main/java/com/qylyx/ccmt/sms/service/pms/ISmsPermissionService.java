@@ -36,10 +36,25 @@ public interface ISmsPermissionService {
 	public Result<SmsPermissionVO> add(SmsPermissionVO vo);
 	
 	/**
+	 * 启用/禁用状态
+	 * @param id
+	 * @param status
+	 * @return
+	 */
+	public Result<Void> changeStatus(Long id, String status);
+	
+	/**
+	 * 查询某角色的权限列表
+	 * @param roleId 角色id
+	 * @return
+	 */
+	public Result<List<SmsPermissionDto>> queryRolePermissionList(Long roleId);
+	
+	/**
 	 * 权限分配
 	 * @param roleId 角色id
 	 * @param permissionIds 权限id集合，以,号隔开
 	 * @return
 	 */
-	public Result<String> distribute(Long roleId, String permissionIds);
+	public Result<Void> distribute(Long roleId, String permissionIds);
 }

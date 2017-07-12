@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 角色管理 -->
+<mapper namespace="com.qylyx.ccmt.sms.dao.pms.ISmsRoleDao">
+	<resultMap id="SmsRoleVO" type="com.qylyx.ccmt.sms.entity.pms.vo.SmsRoleVO"></resultMap>
+	<resultMap id="SmsRoleDto" type="com.qylyx.ccmt.sms.entity.pms.dto.SmsRoleDto"></resultMap>
+    <parameterMap id="SmsRoleVO" type="com.qylyx.ccmt.sms.entity.pms.vo.SmsRoleVO"></parameterMap>
+    
+    <sql id="allCols">
+        t.id, t.name, t.parent_id, t.remark, t.status,
+        t.creator, t.create_time, t.modifier, t.modify_time
+    </sql>
+    
+    <!-- 插入数据 -->
+    <insert id="save" parameterMap="SmsRoleVO" useGeneratedKeys="true" keyProperty="id">
+        insert into sms_role (
+        	name, parent_id, remark, status, 
+        	creator, create_time, modifier, modify_time
+        ) values (
+            #{name},
+            #{parentId},
+            #{remark},
+            #{status},
+            #{creator},
+            #{createTime},
+            #{modifier},
+            #{modifyTime}
+        )
+    </insert>
+    
+    <!-- 启用/禁用状态 -->
+    <update id="changeStatus">
+    	update sms_role t set t.status = #{status} where t.id = #{id}
+    </update>
+    
+    <!-- 查询所有的角色列表 -->
+    <select id="queryDtoList" resultMap="SmsRoleDto">
+    	select <include refid="allCols"/> from sms_role t
+    </select>
+    
+    <!-- 查询某用户的角色列表 -->
+    <select id="queryUserRoleList" resultMap="SmsRoleDto">
+    	select <include refid="allCols"/>
+    		, (select count(1) from sms_user_role ur where ur.role_id = t.id and ur.user_id = #{userId}) as checked 
+    		from sms_role t
+    		where t.status = '1'
+    </select>
+    
+    <!-- 删除某用户的所分配的所有角色 -->
+    <delete id="deleteUserRoleIds">
+    	delete from sms_user_role where user_id = #{userId}
+    </delete>
+    
+    <!-- 批量分配用户角色 -->
+    <insert id="distributeRole">
+    	insert into sms_user_role (user_id, role_id) 
+    	values 
+    	<foreach collection="roleIds" item="roleId" index="index" separator=",">
+    		(#{userId}, #{roleId})
+    	</foreach>
+    </insert>
+</mapper>

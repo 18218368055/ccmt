@@ -30,21 +30,7 @@ public interface ISmsUserService {
 	public Result<Page<SmsUserVO>> queryUserList(PageCo pageCo, SmsUserListCo co);
 	
 	/**
-	 * 新增用户
-	 * @param vo 用户对象
-	 * @return
-	 */
-	public Result<SmsUserVO> add(SmsUserVO vo);
-	
-	/**
-	 * 修改用户
-	 * @param vo
-	 * @return
-	 */
-	public Result<SmsUserVO> update(SmsUserVO vo);
-	
-	/**
-	 * 启用/禁用用户状态
+	 * 启用/禁用状态
 	 * @param id
 	 * @param status
 	 * @return

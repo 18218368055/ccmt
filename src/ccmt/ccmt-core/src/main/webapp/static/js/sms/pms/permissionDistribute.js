@@ -57,7 +57,6 @@ function selNode(node) {
  */
 function distribute() {
 	var permissions = $("#treeData").tree("getChecked", ["checked", "indeterminate"]);
-	console.log(permissions);
 	if (permissions.length == 0) {
 		fmsg("请至少选择一个权限！");
 		return;
